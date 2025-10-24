@@ -94,7 +94,7 @@
                                     </td>
                                     <td class="px-4 py-4 text-center">
                                         <div class="flex justify-center gap-2">
-                                            <form action="{{ route('roles.toggle', $role->pivot->idrole_user) }}"
+                                            {{-- <form action="{{ route('roles.toggle', $role->pivot->idrole_user) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('PATCH')
@@ -103,9 +103,9 @@
                                 {{ $role->pivot->status ? 'bg-orange-600 hover:bg-orange-700' : 'bg-green-600 hover:bg-green-700' }}">
                                                     {{ $role->pivot->status ? '⊗ Nonaktifkan' : '✓ Aktifkan' }}
                                                 </button>
-                                            </form>
+                                            </form> --}}
 
-                                            {{-- <form action="{{ route('roles.delete', $role->pivot->idrole_user) }}" --}}
+                                            {{-- <form action="{{ route('roles.delete', $role->pivot->idrole_user) }}"
                                                 method="POST"
                                                 onsubmit="return confirm('Hapus role ini dari {{ $user->nama }}?')">
                                                 @csrf
@@ -114,7 +114,7 @@
                                                     class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg text-sm font-medium">
                                                     🗑️ Hapus
                                                 </button>
-                                            </form>
+                                            </form> --}}
                                         </div>
                                     </td>
                                 </tr>
@@ -134,10 +134,10 @@
 
         <!-- 🔹 Tombol Kembali -->
         <div class="mt-6">
-            <a href="{{ route('admin.roles.data_role') }}"
+            {{-- <a href="{{ route('admin.roles.data_role') }}"
                 class="inline-block bg-gray-600 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300">
                 ⬅ Kembali ke Data Master
-            </a>
+            </a> --}}
         </div>
     </main>
 

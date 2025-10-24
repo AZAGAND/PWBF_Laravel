@@ -12,7 +12,7 @@
         <div class="container mx-auto px-4 py-4 flex items-center justify-between">
             <!-- Brand / Nama -->
             <div class="flex items-center gap-4">
-                <a href="../Roles/Admin/Admin.php" class="relative font-medium pb-1 group inline-block">
+                <a href="{{ route('roles.admin.dashboard') }}" class="relative font-medium pb-1 group inline-block">
                     ← Home
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-300 transition-all duration-300 group-hover:w-full"></span>
                 </a>
