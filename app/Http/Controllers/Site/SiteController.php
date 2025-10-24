@@ -26,4 +26,5 @@ class SiteController extends Controller
     {
         return view('site.struktur_organisasi');
     }
+
 }
