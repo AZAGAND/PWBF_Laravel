@@ -18,13 +18,11 @@ class Ras_hewan extends Model
         'idjenis_hewan',
     ];
 
-    // Ras ini milik jenis apa (contoh: "Persia" -> jenis "Kucing")
     public function jenisHewan()
     {
-        return $this->belongsTo(JenisHewan::class, 'idjenis_hewan', 'idjenis_hewan');
+        return $this->belongsTo(Jenis_Hewan::class, 'idjenis_hewan', 'idjenis_hewan');
     }
 
-    // Ras ini dipakai oleh banyak pet
     public function pets()
     {
         return $this->hasMany(Pet::class, 'idras_hewan', 'idras_hewan');

@@ -59,6 +59,7 @@
                 <table class="w-full">
                     <thead class="bg-blue-900 text-white">
                         <tr>
+                            {{-- <th class="px-4 py-3 text-center font-semibold">No</th> --}}
                             <th class="px-4 py-3 text-center font-semibold">Nama User</th>
                             <th class="px-4 py-3 text-center font-semibold">Email</th>
                             <th class="px-4 py-3 text-center font-semibold">Role</th>
@@ -70,6 +71,7 @@
                         @forelse($users as $user)
                             @foreach ($user->roles as $role)
                                 <tr class="hover:bg-gray-50 transition-colors">
+                                    {{-- <td class="px-4 py-4 text-gray-800 font-medium">{{ $role + 1 }}</td> --}}
                                     <td class="px-4 py-4 text-center font-semibold text-gray-800">{{ $user->nama }}
                                     </td>
                                     <td class="px-4 py-4 text-center text-gray-700">{{ $user->email }}</td>
@@ -134,17 +136,17 @@
 
         <!-- 🔹 Tombol Kembali -->
         <div class="mt-6">
-            {{-- <a href="{{ route('admin.roles.data_role') }}"
+            <a href="{{ route('roles.admin.data_master') }}"
                 class="inline-block bg-gray-600 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300">
                 ⬅ Kembali ke Data Master
-            </a> --}}
+            </a>
         </div>
     </main>
 
     <!-- 🔹 Footer -->
     <footer class="bg-blue-900 text-white py-6 px-4 mt-auto">
         <div class="container mx-auto text-center">
-            <p class="text-blue-200">&copy; 2024 RSHP Universitas Airlangga. All rights reserved.</p>
+            <p class="text-blue-200">&copy; 2025 RSHP Universitas Airlangga. All rights reserved.</p>
         </div>
     </footer>
 

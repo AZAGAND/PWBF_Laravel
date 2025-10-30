@@ -19,7 +19,6 @@ class Pemilik extends Model
         'iduser',
     ];
 
-    // Pemilik ini sebenarnya user mana (akun login si pemilik hewan)
     public function user()
     {
         return $this->belongsTo(User::class, 'iduser', 'iduser');

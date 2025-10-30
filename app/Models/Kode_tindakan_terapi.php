@@ -20,21 +20,18 @@ class Kode_tindakan_terapi extends Model
         'idkategori_klinis',
     ];
 
-    // kategori besar (Vaksinasi, Bedah, Rawat Inap, dll)
     public function kategori()
     {
         return $this->belongsTo(Kategori::class, 'idkategori', 'idkategori');
     }
 
-    // kategori klinis (Terapi / Tindakan)
     public function kategoriKlinis()
     {
-        return $this->belongsTo(KategoriKlinis::class, 'idkategori_klinis', 'idkategori_klinis');
+        return $this->belongsTo(Kategori_Klinis::class, 'idkategori_klinis', 'idkategori_klinis');
     }
 
-    // semua detail rekam medis yang pakai kode tindakan ini
     public function detailRekamMedis()
     {
-        return $this->hasMany(DetailRekamMedis::class, 'idkode_tindakan_terapi', 'idkode_tindakan_terapi');
+        return $this->hasMany(Detail_Rekam_Medis::class, 'idkode_tindakan_terapi', 'idkode_tindakan_terapi');
     }
 }

@@ -17,9 +17,8 @@ class Jenis_hewan extends Model
         'nama_jenis_hewan',
     ];
 
-    // Contoh: Jenis "Kucing" punya banyak ras (Persia, Maine Coon, dst)
     public function rasHewans()
     {
-        return $this->hasMany(RasHewan::class, 'idjenis_hewan', 'idjenis_hewan');
+        return $this->hasMany(Ras_Hewan::class, 'idjenis_hewan', 'idjenis_hewan');
     }
 }

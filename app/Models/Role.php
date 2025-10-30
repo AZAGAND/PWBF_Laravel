@@ -20,7 +20,7 @@ class Role extends Model
     // role muncul banyak kali di role_user
     public function roleUsers()
     {
-        return $this->hasMany(RoleUser::class, 'idrole', 'idrole');
+        return $this->hasMany(Role_User::class, 'idrole', 'idrole');
     }
 
     // role terhubung ke banyak user lewat role_user

@@ -22,7 +22,7 @@ class User extends Authenticatable
 
     public function roleUsers()
     {
-        return $this->hasMany(RoleUser::class, 'iduser', 'iduser');
+        return $this->hasMany(Role_User::class, 'iduser', 'iduser');
     }
 
     public function roles()

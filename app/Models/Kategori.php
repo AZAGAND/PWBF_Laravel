@@ -17,9 +17,8 @@ class Kategori extends Model
         'nama_kategori',
     ];
 
-    // daftar kode_tindakan_terapi di kategori ini (misal 'Vaksinasi', 'Bedah', dll)
     public function kodeTindakanTerapi()
     {
-        return $this->hasMany(KodeTindakanTerapi::class, 'idkategori', 'idkategori');
+        return $this->hasMany(Kode_Tindakan_Terapi::class, 'idkategori', 'idkategori');
     }
 }

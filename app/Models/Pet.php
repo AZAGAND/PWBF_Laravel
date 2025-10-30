@@ -22,21 +22,18 @@ class Pet extends Model
         'idras_hewan',
     ];
 
-    // hewan ini milik pemilik siapa
     public function pemilik()
     {
         return $this->belongsTo(Pemilik::class, 'idpemilik', 'idpemilik');
     }
 
-    // ras hewan (Golden Retriever, Persia, dsb)
     public function rasHewan()
     {
-        return $this->belongsTo(RasHewan::class, 'idras_hewan', 'idras_hewan');
+        return $this->belongsTo(Ras_Hewan::class, 'idras_hewan', 'idras_hewan');
     }
 
-    // semua reservasi ketemu dokter yg dibuat untuk hewan ini
     public function temuDokter()
     {
-        return $this->hasMany(TemuDokter::class, 'idpet', 'idpet');
+        return $this->hasMany(Temu_Dokter::class, 'idpet', 'idpet');
     }
 }
