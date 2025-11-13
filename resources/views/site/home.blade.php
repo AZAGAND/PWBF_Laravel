@@ -13,7 +13,7 @@
     <!-- Navigasi -->
     <nav class="bg-blue-900 text-white sticky top-0 z-50 shadow-lg">
         <div class="container mx-auto px-4 py-4 flex flex-wrap justify-center gap-6 md:gap-8">
-            <a href="" class="hover:text-blue-300 transition-colors duration-300 font-medium">Home</a>
+            <a href="{{ route('site.home') }}" class="hover:text-blue-300 transition-colors duration-300 font-medium">Home</a>
             <a href="{{ route('struktur_organisasi') }}" class="hover:text-blue-300 transition-colors duration-300 font-medium">Struktur Organisasi</a>
             <a href="{{Route('site.layanan')}}" class="hover:text-blue-300 transition-colors duration-300 font-medium">Layanan Umum</a>
             <a href="{{ route('site.visi-misi') }}" class="hover:text-blue-300 transition-colors duration-300 font-medium">Visi Misi dan Tujuan</a>

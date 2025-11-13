@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-50">
     <!-- Navigasi -->
     <nav class="bg-blue-900 text-white sticky top-0 z-50 shadow-lg">
@@ -15,14 +17,26 @@
                 <span class="text-xl">🏥</span>
                 <span class="font-bold text-lg">Dashboard Admin</span>
             </div>
-            
+
             <!-- User Info & Logout -->
             <div class="flex items-center gap-4">
                 <span class="text-blue-100">Halo, <span class="font-semibold">Admin</span></span>
-                <a href="../../Views/Logout.php" class="relative font-medium pb-1 group inline-block">
+                {{-- <a href="../../Views/Logout.php" class="relative font-medium pb-1 group inline-block">
                     Logout
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-300 transition-all duration-300 group-hover:w-full"></span>
-                </a>
+                </a> --}}
+
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
             </div>
         </div>
     </nav>
@@ -32,7 +46,8 @@
         <!-- Welcome Section -->
         <div class="bg-gradient-to-r from-blue-900 to-blue-700 rounded-xl shadow-lg p-8 mb-8 text-white">
             <h1 class="text-4xl font-bold mb-3">👋 Selamat Datang, Admin!</h1>
-            <p class="text-blue-100 text-lg">Kelola sistem informasi klinik hewan dengan mudah melalui dashboard ini.</p>
+            <p class="text-blue-100 text-lg">Kelola sistem informasi klinik hewan dengan mudah melalui dashboard ini.
+            </p>
         </div>
 
         <!-- Stats Cards -->
@@ -61,7 +76,8 @@
             <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow duration-300">
                 <div class="flex items-center justify-between mb-4">
                     <div class="text-4xl">👨‍⚕️</div>
-                    <div class="bg-purple-100 text-purple-900 px-3 py-1 rounded-full text-sm font-semibold">Doctors</div>
+                    <div class="bg-purple-100 text-purple-900 px-3 py-1 rounded-full text-sm font-semibold">Doctors
+                    </div>
                 </div>
                 <h3 class="text-3xl font-bold text-gray-800 mb-1">42</h3>
                 <p class="text-gray-600 text-sm">Dokter Aktif</p>
@@ -82,16 +98,19 @@
         <h2 class="text-2xl font-bold text-blue-900 mb-6">📊 Menu Utama</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8">
             <!-- Menu 1: Data Master -->
-            <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+            <div
+                class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
                 <div class="text-center">
                     <div class="text-6xl mb-4">📁</div>
                     <h2 class="text-2xl font-bold text-blue-900 mb-3">Data Master</h2>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Kelola data master sistem seperti pengguna, hewan, dan dokter.</p>
-                    <a href="{{route('roles.admin.data_master')}}" class="inline-block bg-blue-900 hover:bg-blue-800 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
+                    <p class="text-gray-600 mb-6 leading-relaxed">Kelola data master sistem seperti pengguna, hewan, dan
+                        dokter.</p>
+                    <a href="{{ route('roles.admin.data_master') }}"
+                        class="inline-block bg-blue-900 hover:bg-blue-800 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
                         Kelola Data Master
                     </a>
                 </div>
-                
+
                 <!-- Info tambahan -->
                 <div class="mt-6 pt-6 border-t border-gray-200">
                     <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">
@@ -110,16 +129,18 @@
             </div>
 
             <!-- Menu 2: Pengaturan Sistem -->
-            <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+            <div
+                class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
                 <div class="text-center">
                     <div class="text-6xl mb-4">⚙️</div>
                     <h2 class="text-2xl font-bold text-blue-900 mb-3">Pengaturan Sistem</h2>
                     <p class="text-gray-600 mb-6 leading-relaxed">Konfigurasi sistem dan preferensi aplikasi.</p>
-                    <a href="Feature/Settings.php" class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
+                    <a href="Feature/Settings.php"
+                        class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
                         Buka Pengaturan
                     </a>
                 </div>
-                
+
                 <!-- Info tambahan -->
                 <div class="mt-6 pt-6 border-t border-gray-200">
                     <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">
@@ -224,7 +245,9 @@
                     <div class="text-3xl">💡</div>
                     <div>
                         <h3 class="font-bold text-blue-900 mb-2">Tips Penggunaan</h3>
-                        <p class="text-gray-700 leading-relaxed">Pastikan untuk membackup data secara berkala. Monitor aktivitas sistem dan periksa status keamanan secara rutin. Gunakan laporan untuk menganalisis performa klinik hewan Anda.</p>
+                        <p class="text-gray-700 leading-relaxed">Pastikan untuk membackup data secara berkala. Monitor
+                            aktivitas sistem dan periksa status keamanan secara rutin. Gunakan laporan untuk
+                            menganalisis performa klinik hewan Anda.</p>
                     </div>
                 </div>
             </div>
@@ -238,4 +261,5 @@
         </div>
     </footer>
 </body>
+
 </html>

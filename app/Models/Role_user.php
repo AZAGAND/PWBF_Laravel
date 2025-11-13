@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Role_user extends Model
 {
-    use HasFactory;
-
     protected $table = 'role_user';
     protected $primaryKey = 'idrole_user';
     public $timestamps = false;
@@ -34,8 +32,7 @@ class Role_user extends Model
         return $this->hasMany(Temu_Dokter::class, 'idrole_user', 'idrole_user');
     }
 
-    // rekam medis yang diperiksa oleh dokter_pemeriksa (foreign key dokter_pemeriksa -> role_user)
-    public function rekamMedisDiperiksa()
+    public function rekamMedis()
     {
         return $this->hasMany(Rekam_Medis::class, 'dokter_pemeriksa', 'idrole_user');
     }
