@@ -20,11 +20,7 @@
 
             <!-- User Info & Logout -->
             <div class="flex items-center gap-4">
-                <span class="text-blue-100">Halo, <span class="font-semibold">Admin</span></span>
-                {{-- <a href="../../Views/Logout.php" class="relative font-medium pb-1 group inline-block">
-                    Logout
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-300 transition-all duration-300 group-hover:w-full"></span>
-                </a> --}}
+                <span class="text-blue-100">Halo, <span class="font-semibold">{{ session('user_name') }}</span></span>
 
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ route('logout') }}"

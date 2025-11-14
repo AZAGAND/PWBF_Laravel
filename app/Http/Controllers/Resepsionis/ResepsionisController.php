@@ -7,9 +7,8 @@ use Illuminate\Http\Request;
 
 class ResepsionisController extends Controller
 {
-    public function Dashboard()
+    public function Dashboard_Resepsionis()
     {
-        return view('roles.resepsionis.dashboard_resepsionis');
+        return view('Roles.Resepsionis.Dashboard_Resepsionis');
     }
-
 }

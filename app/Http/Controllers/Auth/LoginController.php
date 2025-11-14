@@ -20,7 +20,6 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        // validasi sama seperti punyamu
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required|min:6',
@@ -32,8 +31,6 @@ class LoginController extends Controller
                 ->withInput();
         }
 
-        // === FIX UTAMA ===
-        // kamu harus pakai roleUsers (bukan roleUser)
         $user = User::with([
             'roleUsers' => function ($query) {
                 $query->where('status', 1);
@@ -49,19 +46,14 @@ class LoginController extends Controller
             return back()->withErrors(['password' => 'Password salah.'])->withInput();
         }
 
-        // ambil role aktif
-        // === FIX UTAMA ===
         $roleActive = $user->roleUsers[0] ?? null;
 
         if (!$roleActive) {
             return back()->with('error', 'Role user tidak aktif!');
         }
-
         $namaRole = Role::find($roleActive->idrole);
 
         Auth::login($user);
-
-        // === FIX: simpan user_role sebagai STRING supaya tidak strict-false
         $request->session()->put([
             'user_id'         => $user->iduser,
             'user_name'       => $user->nama,
@@ -72,14 +64,12 @@ class LoginController extends Controller
         ]);
 
         $userRole = (string)$roleActive->idrole;
-
-        // === FIX: bandingkan STRING dengan STRING
         switch ($userRole) {
-            case '1': return redirect()->route('roles.admin.dashboard')->with("Sukses Bolooo", "Akses sak penak e ae cahh");
-            case '2': return redirect()->route('roles.admin.dashboard')->with("Sukses Bolooo", "Akses sak penak e ae cahh");
-            case '3': return redirect()->route('roles.admin.dashboard')->with("Sukses Bolooo", "Akses sak penak e ae cahh");
-            case '4': return redirect()->route('roles.admin.dashboard')->with("Sukses Bolooo", "Akses sak penak e ae cahh");
-            case '5': return redirect()->route('roles.admin.dashboard')->with("Sukses Bolooo", "Akses sak penak e ae cahh");
+            case '1': return redirect()->route('dashboard_Admin')->with("Sukses Bolooo", "Akses sak penak e ae cahh");
+            case '2': return redirect()->route('Dashboard_Dokter')->with("Sukses Bolooo", "Akses sak penak e ae cahh");
+            case '3': return redirect()->route('Dashboard_Perawat')->with("Sukses Bolooo", "Akses sak penak e ae cahh");
+            case '4': return redirect()->route('dashboard_Resepsionis')->with("Sukses Bolooo", "Akses sak penak e ae cahh");
+            case '5': return redirect()->route('Dashboard_Pemilik')->with("Sukses Bolooo", "Akses sak penak e ae cahh");
         }
 
         return redirect('/home')->with('success', 'Login berhasil!');
