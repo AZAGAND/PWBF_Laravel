@@ -4,78 +4,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSHP Universitas Airlangga - Visi Misi dan Tujuan</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>RSHP Universitas Airlangga - Visi, Misi, dan Tujuan</title>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            900: '#0f1f3a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
 </head>
 
-<body class="bg-gray-50">
-
+<body class="bg-gray-50 text-slate-800">
     <!-- Navigasi -->
-    <nav class="bg-blue-900 text-white sticky top-0 z-50 shadow-lg">
-        <div class="container mx-auto px-4 py-4 flex flex-wrap justify-center gap-6 md:gap-8">
-            <a href="{{ route('site.home') }}" class="hover:text-blue-300 transition-colors duration-300 font-medium">Home</a>
-            <a href="{{ route('struktur_organisasi') }}" class="hover:text-blue-300 transition-colors duration-300 font-medium">Struktur Organisasi</a>
-            <a href="{{ route('site.layanan') }}" class="hover:text-blue-300 transition-colors duration-300 font-medium">Layanan Umum</a>
-            <a href="{{ route('site.visi-misi') }}" class="hover:text-blue-300 transition-colors duration-300 font-medium">Visi Misi dan Tujuan</a>
-            <a href="{{ route('login') }}"
-                class="bg-blue-600 hover:bg-blue-500 px-5 py-2 rounded-lg transition-colors duration-300 font-medium">Login</a>
+    <header class="sticky top-0 z-50 bg-blue-900 text-white shadow-lg">
+        <div class="container mx-auto flex flex-wrap items-center justify-between gap-4 px-6 py-4">
+            <div class="flex items-center gap-3">
+                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-2xl">
+                    🌐
+                </div>
+                <div>
+                    <p class="text-xs uppercase tracking-[0.4em] text-blue-100">Arah Strategis</p>
+                    <p class="text-xl font-semibold">Visi Misi RSHP UNAIR</p>
+                </div>
+            </div>
+            <nav class="flex flex-wrap items-center justify-center gap-3 text-sm font-semibold">
+                <a href="{{ route('site.home') }}"
+                    class="rounded-full border border-white/20 px-4 py-1 hover:bg-white/10">Beranda</a>
+                <a href="{{ route('struktur_organisasi') }}"
+                    class="rounded-full border border-white/20 px-4 py-1 hover:bg-white/10">Struktur</a>
+                <a href="{{ route('site.layanan') }}"
+                    class="rounded-full border border-white/20 px-4 py-1 hover:bg-white/10">Layanan</a>
+                <a href="{{ route('site.visi-misi') }}"
+                    class="rounded-full border border-white/20 px-4 py-1 bg-white/10">Visi &amp; Misi</a>
+                <a href="{{ route('login') }}"
+                    class="rounded-full bg-white px-5 py-2 text-blue-900 transition hover:bg-blue-50">Portal Login</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Visi Misi -->
-    <section id="visi" class="py-16 px-4 bg-gradient-to-b from-gray-100 to-blue-50 min-h-screen">
-        <div class="container mx-auto max-w-4xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-12 text-center">Visi, Misi, dan Tujuan</h2>
+    <!-- Hero -->
+    <section class="bg-gradient-to-r from-blue-900 via-blue-900 to-blue-700 py-16 text-white">
+        <div class="container mx-auto max-w-5xl px-6">
+            <p class="text-sm font-semibold uppercase tracking-[0.5em] text-blue-200 drop-shadow">Nilai • Integritas •
+                Inovasi</p>
+            <h1 class="mt-4 text-4xl font-bold leading-tight drop-shadow-[0_12px_30px_rgba(15,23,42,0.55)]">Visi, misi, dan
+                tujuan RSHP Universitas Airlangga</h1>
+            <p class="mt-4 text-blue-100 text-lg drop-shadow">
+                Dokumen ini menjadi dasar pengembangan layanan kesehatan hewan berbasis akademik serta arah riset dan
+                pengabdian masyarakat kami.
+            </p>
+        </div>
+    </section>
 
-            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-8">
-                <h3 class="text-2xl font-bold text-blue-800 mb-4 border-l-4 border-blue-600 pl-4">Visi</h3>
-                <p class="text-gray-700 text-lg leading-relaxed">
-                    Menjadi pusat layanan kesehatan hewan terdepan di Indonesia berbasis pendidikan, penelitian, dan
-                    pengabdian masyarakat.
+    <!-- Content -->
+    <section class="py-16">
+        <div class="container mx-auto max-w-5xl px-6 space-y-10">
+            <article class="rounded-[32px] bg-white p-10 shadow-xl">
+                <p class="text-sm font-semibold uppercase tracking-[0.4em] text-blue-500">Visi</p>
+                <h2 class="mt-3 text-3xl font-bold text-blue-900">Menjadi pusat layanan kesehatan hewan terdepan di Indonesia
+                    berbasis pendidikan, penelitian, dan pengabdian masyarakat.</h2>
+                <p class="mt-4 text-slate-600">
+                    Visi ini menekankan integrasi antara pelayanan klinis, pendidikan dokter hewan, dan kontribusi nyata bagi
+                    masyarakat.
                 </p>
-            </div>
+            </article>
 
-            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-8">
-                <h3 class="text-2xl font-bold text-blue-800 mb-6 border-l-4 border-blue-600 pl-4">Misi</h3>
-                <ol class="space-y-4">
-                    <li class="flex items-start">
-                        <span
-                            class="inline-flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-full font-bold mr-4 flex-shrink-0">1</span>
-                        <span class="text-gray-700 text-lg pt-1">Menyelenggarakan layanan kesehatan hewan yang
-                            profesional dan ramah.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span
-                            class="inline-flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-full font-bold mr-4 flex-shrink-0">2</span>
-                        <span class="text-gray-700 text-lg pt-1">Mendukung pendidikan dan penelitian di bidang
-                            kedokteran hewan.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span
-                            class="inline-flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-full font-bold mr-4 flex-shrink-0">3</span>
-                        <span class="text-gray-700 text-lg pt-1">Meningkatkan kesadaran masyarakat akan pentingnya
-                            kesehatan hewan.</span>
-                    </li>
-                </ol>
-            </div>
+            <article class="rounded-[32px] bg-white p-10 shadow-xl">
+                <p class="text-sm font-semibold uppercase tracking-[0.4em] text-blue-500">Misi</p>
+                <div class="mt-6 grid gap-4">
+                    @foreach ([
+                        'Menyelenggarakan layanan kesehatan hewan yang profesional, ramah, dan berkesinambungan.',
+                        'Mendukung pendidikan dokter hewan dan penelitian klinis berbasis bukti.',
+                        'Mengembangkan program pengabdian masyarakat dan edukasi pemilik hewan.',
+                        'Membangun kolaborasi nasional dan internasional untuk inovasi kesehatan hewan.'
+                    ] as $index => $mission)
+                        <div class="flex items-start gap-4 rounded-3xl border border-blue-100 p-4">
+                            <span
+                                class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-50 text-lg font-semibold text-blue-900">{{ $index + 1 }}</span>
+                            <p class="text-slate-700">{{ $mission }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            </article>
 
-            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
-                <h3 class="text-2xl font-bold text-blue-800 mb-4 border-l-4 border-blue-600 pl-4">Tujuan</h3>
-                <p class="text-gray-700 text-lg leading-relaxed">
-                    Memberikan pelayanan medis berkualitas tinggi sekaligus menjadi pusat pembelajaran mahasiswa
-                    kedokteran hewan.
-                </p>
+            <article class="rounded-[32px] bg-white p-10 shadow-xl">
+                <p class="text-sm font-semibold uppercase tracking-[0.4em] text-blue-500">Tujuan Strategis</p>
+                <div class="mt-6 grid gap-4 md:grid-cols-2">
+                    @foreach ([
+                        'Meningkatkan mutu layanan klinis melalui standar operasional berbasis evidence.',
+                        'Menjadi pusat pembelajaran unggulan bagi mahasiswa kedokteran hewan.',
+                        'Menghasilkan riset aplikatif yang menjawab masalah kesehatan hewan nasional.',
+                        'Memberikan layanan informasi dan edukasi kesehatan hewan kepada masyarakat.'
+                    ] as $goal)
+                        <div class="rounded-2xl bg-blue-50 p-4 text-sm text-blue-900 shadow-inner">
+                            {{ $goal }}
+                        </div>
+                    @endforeach
+                </div>
+            </article>
+
+            <div class="rounded-[32px] border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-8 shadow-lg">
+                <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <p class="text-sm font-semibold uppercase tracking-[0.4em] text-blue-500">Implementasi</p>
+                        <p class="mt-2 text-lg font-semibold text-blue-900">Seluruh civitas RSHP diwajibkan memahami dan
+                            menjalankan visi serta misi ini pada setiap pelayanan.</p>
+                    </div>
+                    <a href="{{ route('login') }}"
+                        class="rounded-2xl bg-blue-900 px-6 py-3 text-white shadow-lg shadow-blue-900/30 hover:bg-blue-800">
+                        Masuk Portal Strategi
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-blue-900 text-white py-8 px-4">
-        <div class="container mx-auto text-center">
-            <p class="text-blue-200">&copy; 2024 RSHP Universitas Airlangga. All rights reserved.</p>
+    <footer class="bg-blue-900 py-10 text-white">
+        <div class="container mx-auto flex flex-col gap-4 px-6 text-center">
+            <p class="text-blue-100">&copy; 2025 RSHP Universitas Airlangga. Seluruh hak cipta dilindungi.</p>
+            <p class="text-sm text-blue-200">Dokumen visi misi ditetapkan oleh pimpinan RSHP UNAIR.</p>
         </div>
     </footer>
-
 </body>
 
 </html>

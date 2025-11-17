@@ -8,7 +8,8 @@ use App\Models\Pemilik;
 
 class DataPemilikController extends Controller
 {
-    public function DataPemilik() {
+    public function DataPemilik()
+    {
         $datapemilik = Pemilik::with('user')->get();
         return view('Roles/Admin/Views/Data_Pemilik', compact('datapemilik'));
     }
