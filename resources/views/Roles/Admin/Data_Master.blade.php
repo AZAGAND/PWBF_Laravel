@@ -50,7 +50,7 @@
                     <div class="text-6xl mb-4">👤</div>
                     <h2 class="text-2xl font-bold text-blue-900 mb-3">Data User</h2>
                     <p class="text-gray-600 mb-6 leading-relaxed">Kelola data pengguna sistem dan informasi akun.</p>
-                    <a href="{{ route('roles.admin.views.data_user') }}" class="inline-block bg-blue-900 hover:bg-blue-800 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
+                    <a href="{{ route('data_user') }}" class="inline-block bg-blue-900 hover:bg-blue-800 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
                         Kelola Data User
                     </a>
                 </div>
@@ -78,7 +78,7 @@
                     <div class="text-6xl mb-4">⚙️</div>
                     <h2 class="text-2xl font-bold text-blue-900 mb-3">Manajemen Role</h2>
                     <p class="text-gray-600 mb-6 leading-relaxed">Kelola role dan hak akses pengguna sistem.</p>
-                    <a href="{{ route('roles.admin.views.data_role') }}" class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
+                    <a href="{{ route('data_role') }}" class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
                         Kelola Role
                     </a>
                 </div>
@@ -106,7 +106,7 @@
                     <div class="text-6xl mb-4">🐾</div>
                     <h2 class="text-2xl font-bold text-blue-900 mb-3">Ras Hewan</h2>
                     <p class="text-gray-600 mb-6 leading-relaxed">Kelola data ras hewan peliharaan yang terdaftar.</p>
-                    <a href="{{ route('roles.admin.views.ras_hewan') }}" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
+                    <a href="{{ route('ras_hewan') }}" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
                         Kelola Ras Hewan
                     </a>
                 </div>
@@ -134,7 +134,7 @@
                     <div class="text-6xl mb-4">🐱</div>
                     <h2 class="text-2xl font-bold text-blue-900 mb-3">Jenis Hewan</h2>
                     <p class="text-gray-600 mb-6 leading-relaxed">Kelola kategori jenis hewan (kucing, anjing, dll).</p>
-                    <a href="{{ route('roles.admin.views.jenis_hewan') }}" class="inline-block bg-orange-600 hover:bg-orange-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
+                    <a href="{{ route('jenis_hewan') }}" class="inline-block bg-orange-600 hover:bg-orange-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
                         Kelola Jenis Hewan
                     </a>
                 </div>
@@ -162,7 +162,7 @@
                     <div class="text-6xl mb-4">📋</div>
                     <h2 class="text-2xl font-bold text-blue-900 mb-3">Data Pemilik</h2>
                     <p class="text-gray-600 mb-6 leading-relaxed">Kelola informasi pemilik hewan peliharaan.</p>
-                    <a href="{{ route('roles.admin.views.data_pemilik') }}" class="inline-block bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
+                    <a href="{{ route('data_pemilik') }}" class="inline-block bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
                         Kelola Data Pemilik
                     </a>
                 </div>
@@ -190,7 +190,7 @@
                     <div class="text-6xl mb-4">👨‍⚕️</div>
                     <h2 class="text-2xl font-bold text-blue-900 mb-3">Data Dokter</h2>
                     <p class="text-gray-600 mb-6 leading-relaxed">Kelola informasi dokter hewan dan spesialisasi.</p>
-                    <a href="{{ route('roles.admin.views.data_dokter') }}" class="inline-block bg-teal-600 hover:bg-teal-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
+                    <a href="{{ route('data_dokter') }}" class="inline-block bg-teal-600 hover:bg-teal-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
                         Kelola Data Dokter
                     </a>
                 </div>
@@ -218,7 +218,7 @@
                     <div class="text-6xl mb-4">🐶</div>
                     <h2 class="text-2xl font-bold text-blue-900 mb-3">Data Hewan</h2>
                     <p class="text-gray-600 mb-6 leading-relaxed">Kelola database hewan peliharaan terdaftar.</p>
-                    <a href="{{ route('roles.admin.views.data_hewan') }}" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
+                    <a href="{{ route('data_hewan') }}" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
                         Kelola Data Hewan
                     </a>
                 </div>
@@ -246,7 +246,7 @@
                     <div class="text-6xl mb-4">📂</div>
                     <h2 class="text-2xl font-bold text-blue-900 mb-3">Data Kategori</h2>
                     <p class="text-gray-600 mb-6 leading-relaxed">Kelola kategori untuk klasifikasi data sistem.</p>
-                    <a href="{{ route('roles.admin.views.data_kategori') }}" class="inline-block bg-pink-600 hover:bg-pink-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
+                    <a href="{{ route('data_kategori') }}" class="inline-block bg-pink-600 hover:bg-pink-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
                         Kelola Kategori
                     </a>
                 </div>
@@ -274,7 +274,7 @@
                     <div class="text-6xl mb-4">🩺</div>
                     <h2 class="text-2xl font-bold text-blue-900 mb-3">Kategori Klinis</h2>
                     <p class="text-gray-600 mb-6 leading-relaxed">Kelola kategori pemeriksaan dan diagnosis klinis.</p>
-                    <a href="{{ route('roles.admin.views.data_kategori_klinis') }}" class="inline-block bg-cyan-600 hover:bg-cyan-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
+                    <a href="{{ route('data_kategori_klinis') }}" class="inline-block bg-cyan-600 hover:bg-cyan-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
                         Kelola Kategori Klinis
                     </a>
                 </div>
@@ -302,7 +302,7 @@
                     <div class="text-6xl mb-4">💉</div>
                     <h2 class="text-2xl font-bold text-blue-900 mb-3">Kode Tindakan Terapi</h2>
                     <p class="text-gray-600 mb-6 leading-relaxed">Kelola kode dan jenis tindakan terapi medis.</p>
-                    <a href="{{ route('roles.admin.views.data_kode_tindakan_terapi') }}" class="inline-block bg-lime-600 hover:bg-lime-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
+                    <a href="{{ route('data_kode_tindakan_terapi') }}" class="inline-block bg-lime-600 hover:bg-lime-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
                         Kelola Kode Tindakan
                     </a>
                 </div>
