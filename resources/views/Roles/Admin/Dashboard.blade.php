@@ -101,7 +101,7 @@
                     <h2 class="text-2xl font-bold text-blue-900 mb-3">Data Master</h2>
                     <p class="text-gray-600 mb-6 leading-relaxed">Kelola data master sistem seperti pengguna, hewan, dan
                         dokter.</p>
-                    <a href="{{ route('roles.admin.data_master') }}"
+                    <a href="{{ route('data_master') }}"
                         class="inline-block bg-blue-900 hover:bg-blue-800 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
                         Kelola Data Master
                     </a>

@@ -33,17 +33,19 @@ route::get('/struktur-Organisasi', [SiteController::class, 'struktur'])->name('s
 Auth::routes();
 route::middleware('isAdministrator')->group(function() {
     route::get('dashboard', [DashboardController::class, 'Dashboard'])->name('dashboard_Admin');
-    route::get('data_master', [DashboardController::class, 'DataMaster'])->name('roles.admin.data_master');
-    route::get('data_user', [UserController::class, 'DataUser'])->name('roles.admin.views.data_user');
-    route::get('data_role', [RoleController::class, 'DataRole'])->name('roles.admin.views.data_role');
-    route::get('ras_hewan', [Ras_HewanController::class, 'DataRasHewan'])->name('roles.admin.views.ras_hewan');
-    route::get('jenis_hewan', [Jenis_HewanController::class, 'DataJenisHewan'])->name('roles.admin.views.jenis_hewan');
-    route::get('data_pemilik', [DataPemilikController::class, 'DataPemilik'])->name('roles.admin.views.data_pemilik');
-    route::get('data_dokter', [Data_DokterController::class, 'DataDokter'])->name('roles.admin.views.data_dokter');
-    route::get('data_hewan', [Data_HewanController::class, 'DataHewan'])->name('roles.admin.views.data_hewan');
-    route::get('data_kategori', [Data_KategoriController::class, 'DataKategori'])->name('roles.admin.views.data_kategori');
-    route::get('data_kategori_klinis', [Kategori_KlinisController::class, 'DataKategoriKlinis'])->name('roles.admin.views.data_kategori_klinis');
-    route::get('data_kode_tindakan_terapi', [Kode_tindakan_terapiController::class, 'DataKodeTindakanTerapi'])->name('roles.admin.views.data_kode_tindakan_terapi');
+    route::get('data_master', [DashboardController::class, 'DataMaster'])->name('data_master');
+    route::get('data_user', [UserController::class, 'DataUser'])->name('data_user');
+    route::get('data_role', [RoleController::class, 'DataRole'])->name('data_role');
+    route::get('ras_hewan', [Ras_HewanController::class, 'DataRasHewan'])->name('ras_hewan');
+    route::get('jenis_hewan', [Jenis_HewanController::class, 'DataJenisHewan'])->name('jenis_hewan');
+    route::get('data_pemilik', [DataPemilikController::class, 'DataPemilik'])->name('data_pemilik');
+    route::get('data_dokter', [Data_DokterController::class, 'DataDokter'])->name('data_dokter');
+    route::get('data_hewan', [Data_HewanController::class, 'DataHewan'])->name('data_hewan');
+    route::get('data_kategori', [Data_KategoriController::class, 'DataKategori'])->name('data_kategori');
+    route::get('data_kategori_klinis', [Kategori_KlinisController::class, 'DataKategoriKlinis'])->name('data_kategori_klinis');
+    route::get('data_kode_tindakan_terapi', [Kode_tindakan_terapiController::class, 'DataKodeTindakanTerapi'])->name('data_kode_tindakan_terapi');
+    route::get('FormJenisHewan', [Jenis_HewanController::class, 'CreateJenisHewan'])->name('FormJenisHewan');
+    route::post('StoreJenisHewan', [Jenis_HewanController::class, 'StoreJenisHewan'])->name('StoreJenisHewan');
 });
 
 route::middleware('isResepsionis')->group(function() {
