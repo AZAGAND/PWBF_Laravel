@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {{-- TailAdmin CSS hasil build --}}
     <link rel="stylesheet" href="{{ asset('build/assets/style.css') }}">
 
     <img src="{{ asset('build/assets/src/images/logo/logo.svg') }}" class="w-10" />
 
-    {{-- JS dari Laravel Vite --}}
     @vite(['resources/js/app.js'])
 
 </head>

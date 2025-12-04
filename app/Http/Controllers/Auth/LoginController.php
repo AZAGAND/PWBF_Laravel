@@ -71,7 +71,6 @@ class LoginController extends Controller
             case '4': return redirect()->route('dashboard_Resepsionis')->with("Sukses Bolooo", "Akses sak penak e ae cahh");
             case '5': return redirect()->route('Dashboard_Pemilik')->with("Sukses Bolooo", "Akses sak penak e ae cahh");
         }
-
         return redirect('/home')->with('success', 'Login berhasil!');
     }
 
