@@ -1,155 +1,176 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.admin')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manajemen Role</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body class="flex flex-col min-h-screen bg-gray-50">
-
-    <!-- 🔹 Navbar -->
-    <nav class="bg-blue-900 text-white sticky top-0 z-50 shadow-lg">
-        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-            <!-- Brand -->
-            <div class="flex items-center gap-2">
-                <span class="text-xl">👥</span>
-                <span class="font-bold text-lg">Manajemen Role</span>
-            </div>
-
-            <!-- User Info -->
-            <div class="flex items-center gap-4">
-                <span class="text-blue-100">Halo,
-                    <span class="font-semibold">{{ Auth::user()->nama ?? 'Admin' }}</span>
-                </span>
-                {{-- <a href="{{ route('logout') }}" 
-                    class="relative font-medium pb-1 group inline-block transition-all duration-300">
-                    Logout
-                    <span
-                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-300 transition-all duration-300 group-hover:w-full"></span>
-                </a> --}}
-            </div>
-        </div>
-    </nav>
-
-    <!-- 🔹 Konten Utama -->
-    <main class="flex-grow container mx-auto px-4 py-8">
-        <!-- Header -->
-        <div class="mb-8">
-            <h2 class="text-3xl font-bold text-blue-900 mb-2 flex items-center gap-2">
-                <span class="text-4xl">🧩</span>
-                <span>Manajemen Role Pengguna</span>
+@section('content')
+    <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+        
+        {{-- Breadcrumb / Header --}}
+        <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h2 class="text-title-md2 font-bold text-black dark:text-white">
+                Manajemen Role
             </h2>
-            <p class="text-gray-600">Kelola role dan hak akses pengguna sistem</p>
+
+            <nav>
+                <ol class="flex items-center gap-2">
+                    <li>
+                        <a class="font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                            href="{{ route('data_master') }}">
+                            Dashboard /
+                        </a>
+                    </li>
+                    <li class="font-medium text-gray-500 dark:text-gray-400">Manajemen Role</li>
+                </ol>
+            </nav>
         </div>
 
-        <!-- 🔸 Tombol Tambah Role -->
-        {{-- <div class="mb-6">
-            <a href="{{ route('roles.create') }}"
-                class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300">
-                ➕ Tambah Role Baru
-            </a>
-        </div> --}}
+        {{-- Table Section --}}
+        <div class="rounded-sm border border-gray-200 bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-gray-800 dark:bg-gray-900 sm:px-7.5 xl:pb-1">
+            
+            {{-- Header Actions --}}
+            <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white">
+                        List User Roles
+                    </h3>
+                </div>
+                
+                {{-- Tombol Tambah Role --}}
+                <a href="{{ route('roles.create') }}"
+                    class="inline-flex items-center justify-center gap-2.5 rounded-lg bg-primary px-4 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-6">
+                    <span>
+                        <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 4.16666V15.8333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M4.16669 10H15.8334" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    Tambah Role Baru
+                </a>
+            </div>
 
-        <!-- 🔸 Card Tabel -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-            <div class="overflow-x-auto">
-                <table class="w-full">
-                    <thead class="bg-blue-900 text-white">
-                        <tr>
-                            {{-- <th class="px-4 py-3 text-center font-semibold">No</th> --}}
-                            <th class="px-4 py-3 text-center font-semibold">Nama User</th>
-                            <th class="px-4 py-3 text-center font-semibold">Email</th>
-                            <th class="px-4 py-3 text-center font-semibold">Role</th>
-                            <th class="px-4 py-3 text-center font-semibold">Status</th>
-                            <th class="px-4 py-3 text-center font-semibold">Aksi</th>
+            <div class="max-w-full overflow-x-auto">
+                <table class="w-full table-auto">
+                    <thead>
+                        <tr class="bg-gray-2 text-left dark:bg-meta-4">
+                            <th class="min-w-[50px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                                No
+                            </th>
+                            <th class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                                Nama User
+                            </th>
+                            <th class="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white">
+                                Email
+                            </th>
+                            <th class="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
+                                Role
+                            </th>
+                            <th class="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
+                                Status
+                            </th>
+                            <th class="py-4 px-4 font-medium text-black dark:text-white text-center">
+                                Aksi
+                            </th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-200">
+                    <tbody>
                         @forelse($users as $user)
                             @foreach ($user->roles as $role)
-                                <tr class="hover:bg-gray-50 transition-colors">
-                                    {{-- <td class="px-4 py-4 text-gray-800 font-medium">{{ $role + 1 }}</td> --}}
-                                    <td class="px-4 py-4 text-center font-semibold text-gray-800">{{ $user->nama }}
+                                <tr class="transition-colors border-b border-[#eee] dark:border-strokedark">
+                                    <td class="py-5 px-4 pl-9 xl:pl-11">
+                                        <h5 class="font-medium text-black dark:text-white">{{ $loop->parent->iteration }}</h5>
                                     </td>
-                                    <td class="px-4 py-4 text-center text-gray-700">{{ $user->email }}</td>
-                                    <td class="px-4 py-4 text-center">
-                                        <span
-                                            class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                                    <td class="py-5 px-4 pl-9 xl:pl-11">
+                                        <div class="flex items-center gap-4">
+                                            <div class="h-12 w-12 rounded-md shrink-0">
+                                                 <div class="h-10 w-10 overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-300 font-bold">
+                                                    {{ substr($user->nama, 0, 1) }}
+                                                </div>
+                                            </div>
+                                            <span class="text-sm text-black dark:text-white font-medium">
+                                                {{ $user->nama }}
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="py-5 px-4">
+                                        <p class="text-black dark:text-white">
+                                            {{ $user->email }}
+                                        </p>
+                                    </td>
+                                    <td class="py-5 px-4">
+                                        <span class="text-sm text-black dark:text-white font-medium">
                                             {{ $role->nama_role }}
                                         </span>
                                     </td>
-                                    <td class="px-4 py-4 text-center">
+                                    <td class="py-5 px-4">
                                         @if ($role->pivot->status)
-                                            <span
-                                                class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-                                                ✓ Aktif
+                                            <span class="text-sm text-black dark:text-white font-medium">
+                                                Active
                                             </span>
                                         @else
-                                            <span
-                                                class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
-                                                ✗ Tidak Aktif
+                                            <span class="text-sm text-black dark:text-white font-medium">
+                                                Inactive
                                             </span>
                                         @endif
                                     </td>
-                                    <td class="px-4 py-4 text-center">
-                                        <div class="flex justify-center gap-2">
-                                            {{-- <form action="{{ route('roles.toggle', $role->pivot->idrole_user) }}"
-                                                method="POST">
+                                    <td class="py-5 px-4">
+                                        <div class="flex items-center justify-center gap-2">
+                                            {{-- Toggle Status Button --}}
+                                            <form action="{{ route('roles.toggle', $role->pivot->idrole_user) }}" method="POST">
                                                 @csrf
                                                 @method('PATCH')
-                                                <button type="submit"
-                                                    class="text-white px-3 py-1 rounded-lg text-sm font-medium
-                                {{ $role->pivot->status ? 'bg-orange-600 hover:bg-orange-700' : 'bg-green-600 hover:bg-green-700' }}">
-                                                    {{ $role->pivot->status ? '⊗ Nonaktifkan' : '✓ Aktifkan' }}
+                                                <button type="submit" 
+                                                    class="inline-flex items-center gap-1.5 rounded bg-gray-100 px-2.5 py-1.5 text-xs font-medium text-gray-600 hover:bg-yellow-100 hover:text-yellow-600 dark:bg-gray-700 dark:text-white dark:hover:bg-yellow-900/50 dark:hover:text-yellow-400 transition" 
+                                                    title="{{ $role->pivot->status ? 'Nonaktifkan' : 'Aktifkan' }}">
+                                                    <svg class="fill-current" width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        @if($role->pivot->status)
+                                                            {{-- Icon Active (Open Eye/Check/Toggle On) --}}
+                                                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM10 17L15 12L10 7V17Z" fill="currentColor"/>
+                                                        @else
+                                                            {{-- Icon Inactive --}}
+                                                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM10 17L15 12L10 7V17Z" fill="currentColor"/>
+                                                        @endif
+                                                    </svg>
+                                                    {{ $role->pivot->status ? 'Disable' : 'Enable' }}
                                                 </button>
-                                            </form> --}}
+                                            </form>
 
-                                            {{-- <form action="{{ route('roles.delete', $role->pivot->idrole_user) }}"
-                                                method="POST"
-                                                onsubmit="return confirm('Hapus role ini dari {{ $user->nama }}?')">
+                                            {{-- Edit Button --}}
+                                            <a href="{{ route('roles.edit', $role->pivot->idrole_user) }}" 
+                                                class="inline-flex items-center gap-1.5 rounded bg-gray-100 px-2.5 py-1.5 text-xs font-medium text-gray-600 hover:bg-blue-100 hover:text-blue-600 dark:bg-gray-700 dark:text-white dark:hover:bg-blue-900/50 dark:hover:text-blue-400 transition" 
+                                                title="Edit">
+                                                <svg class="fill-current" width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M13.7535 2.47502C13.5186 2.24003 13.2386 2.12253 12.9135 2.12253C12.5885 2.12253 12.3085 2.24003 12.0735 2.47502L2.55855 11.9875C2.51855 12.025 2.48355 12.07 2.45605 12.115L1.01855 15.6575C1.00605 15.6875 1.00105 15.72 1.00105 15.7525C1.00105 15.8275 1.02605 15.8975 1.07605 15.9475C1.12605 15.9975 1.19605 16.0225 1.27105 16.0225C1.30355 16.0225 1.33605 16.0175 1.36605 16.0025L4.90855 14.5675C4.94855 14.5375 4.99355 14.4975 5.03105 14.4575L14.5461 4.94502C14.7811 4.71003 14.8986 4.43003 14.8986 4.10502C14.8986 3.78003 14.7811 3.50003 14.5461 3.26502L13.7535 2.47502Z" fill="currentColor"/>
+                                                </svg>
+                                                Edit
+                                            </a>
+
+                                            {{-- Delete Button --}}
+                                            <form action="{{ route('roles.delete', $role->pivot->idrole_user) }}" method="POST" onsubmit="return confirm('Hapus role ini dari {{ $user->nama }}?')">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit"
-                                                    class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg text-sm font-medium">
-                                                    🗑️ Hapus
+                                                <button type="submit" 
+                                                    class="inline-flex items-center gap-1.5 rounded bg-gray-100 px-2.5 py-1.5 text-xs font-medium text-gray-600 hover:bg-red-100 hover:text-red-600 dark:bg-gray-700 dark:text-white dark:hover:bg-red-900/50 dark:hover:text-red-400 transition" 
+                                                    title="Hapus">
+                                                    <svg class="fill-current" width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M13.7535 2.47502C13.5186 2.24003 13.2386 2.12253 12.9135 2.12253C12.5885 2.12253 12.3085 2.24003 12.0735 2.47502L2.55855 11.9875C2.51855 12.025 2.48355 12.07 2.45605 12.115L1.01855 15.6575C1.00605 15.6875 1.00105 15.72 1.00105 15.7525C1.00105 15.8275 1.02605 15.8975 1.07605 15.9475C1.12605 15.9975 1.19605 16.0225 1.27105 16.0225C1.30355 16.0225 1.33605 16.0175 1.36605 16.0025L4.90855 14.5675C4.94855 14.5375 4.99355 14.4975 5.03105 14.4575L14.5461 4.94502C14.7811 4.71003 14.8986 4.43003 14.8986 4.10502C14.8986 3.78003 14.7811 3.50003 14.5461 3.26502L13.7535 2.47502Z" fill="currentColor"/>
+                                                        <path d="M13.2188 5.4375H12.6562H4.78125H4.21875C3.79688 5.4375 3.4375 5.79688 3.4375 6.21875V6.78125C3.4375 6.86719 3.50781 6.9375 3.59375 6.9375H13.8438C13.9297 6.9375 14 6.86719 14 6.78125V6.21875C14 5.79688 13.6406 5.4375 13.2188 5.4375Z" fill="currentColor"/>
+                                                        <path d="M12.9242 7.78125H4.51328C4.38047 7.78125 4.31016 7.94219 4.39453 8.04375L5.70078 9.58906C5.74766 9.64375 5.77344 9.71328 5.77344 9.78516V14.6562C5.77344 14.8977 5.96953 15.0938 6.21094 15.0938H11.2266C11.468 15.0938 11.6641 14.8977 11.6641 14.6562V9.78516C11.6641 9.7125 11.6906 9.64297 11.7375 9.58984L13.0422 8.04375C13.1258 7.94219 13.0562 7.78125 12.9242 7.78125Z" fill="currentColor"/>
+                                                    </svg>
+                                                    Hapus
                                                 </button>
-                                            </form> --}}
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
                             @endforeach
                         @empty
                             <tr>
-                                <td colspan="5" class="px-4 py-10 text-center text-gray-500">
-                                    📭 Belum ada data role pengguna
+                                <td colspan="6" class="py-5 px-4 text-center dark:border-strokedark">
+                                    <p class="text-gray-500 dark:text-gray-400">Belum ada data role user.</p>
                                 </td>
                             </tr>
                         @endforelse
                     </tbody>
-
                 </table>
             </div>
         </div>
-
-        <!-- 🔹 Tombol Kembali -->
-        <div class="mt-6">
-            <a href="{{ route('roles.admin.data_master') }}"
-                class="inline-block bg-gray-600 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300">
-                ⬅ Kembali ke Data Master
-            </a>
-        </div>
-    </main>
-
-    <!-- 🔹 Footer -->
-    <footer class="bg-blue-900 text-white py-6 px-4 mt-auto">
-        <div class="container mx-auto text-center">
-            <p class="text-blue-200">&copy; 2025 RSHP Universitas Airlangga. All rights reserved.</p>
-        </div>
-    </footer>
-
-</body>
-
-</html>
+    </div>
+@endsection

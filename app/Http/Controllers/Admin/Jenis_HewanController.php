@@ -10,43 +10,49 @@ class Jenis_HewanController extends Controller
 {
     public function DataJenisHewan()
     {
-        $jenishewan = jenis_hewan::all();
-        return view('roles.admin.views.jenis_hewan', compact('jenishewan'));
+        $jenisHewans = Jenis_hewan::all();
+        return view('Roles.Admin.Views.Data_Jenis_Hewan', compact('jenisHewans'));
     }
 
-    public function CreateJenisHewan()
+    public function create()
     {
-        return view('roles.admin.views.feature.formjenishewan');
+        return view('Roles.Admin.Views.Feature.Create_Jenis_Hewan');
     }
 
-    public function StoreJenisHewan(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
-            'nama_jenis_hewan' => 'required|max:100',
+            'nama_jenis_hewan' => 'required|string|max:100',
         ]);
 
-        jenis_hewan::create([
-            'nama_jenis_hewan' => $request->nama_jenis_hewan
+        Jenis_hewan::create($request->all());
+
+        return redirect()->route('jenis_hewan')->with('success', 'Jenis hewan berhasil ditambahkan');
+    }
+
+    public function edit($id)
+    {
+        $jenisHewan = Jenis_hewan::findOrFail($id);
+        return view('Roles.Admin.Views.Feature.Edit_Jenis_Hewan', compact('jenisHewan'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama_jenis_hewan' => 'required|string|max:100',
         ]);
 
-        return redirect()->route('jenis_hewan')
-            ->with('ok', 'Jenis hewan berhasil ditambahkan!');
+        $jenisHewan = Jenis_hewan::findOrFail($id);
+        $jenisHewan->update($request->all());
+
+        return redirect()->route('jenis_hewan')->with('success', 'Jenis hewan berhasil diperbarui');
     }
 
-    protected function createJenisHewanHelper(array $data)
+    public function destroy($id)
     {
-        try {
-            return Jenis_Hewan::create([
-                'nama_jenis_hewan' => $this->formatNamaJenisHewan($data['nama_jenis_hewan']),
-            ]);
-        } catch (\Exception $e) {
-            throw new \Exception('Gagal menyimpan data jenis hewan: ' . $e->getMessage());
-        }
-    }
+        $jenisHewan = Jenis_hewan::findOrFail($id);
+        $jenisHewan->delete();
 
-    protected function formatNamaJenisHewan($nama)
-    {
-        return trim(ucwords(strtolower($nama)));
+        return redirect()->route('jenis_hewan')->with('success', 'Jenis hewan berhasil dihapus');
     }
-
 }

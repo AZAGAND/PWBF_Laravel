@@ -1,93 +1,95 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    {{-- Dark Mode Script (Prevent White Flash) --}}
+    <script>
+        if (localStorage.getItem('darkMode') === 'true' || (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
 
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    {{-- REMOVE if not needed --}}
+    <link rel="stylesheet" href="{{ asset('build/assets/style.css') }}">
+
+    @vite([
+        'resources/css/app.css',
+        'resources/js/app.js'
+    ])
+
     @stack('head')
+    <style>
+        .preloader-mask {
+            background-color: #ffffff;
+            z-index: 9999999;
+        }
+        .dark .preloader-mask {
+            background-color: #111827; /* gray-900 */
+        }
+        .spinner-border {
+            border: 4px solid #2563eb; /* blue-600 */
+            border-top-color: transparent;
+        }
+        .dark .spinner-border {
+            border-color: #ffffff;
+            border-top-color: transparent;
+        }
+    </style>
 </head>
-@php
-    $isAuthPage = request()->routeIs('login');
-@endphp
 
-<body class="{{ $isAuthPage ? 'bg-gray-50' : '' }}">
-    <div id="app">
-        @unless ($isAuthPage)
-            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-                <div class="container">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+<body 
+    x-data="{ 
+        page: 'ecommerce', 
+        loaded: true, 
+        darkMode: localStorage.getItem('darkMode') === 'true', 
+        stickyMenu: false, 
+        sidebarToggle: false, 
+        scrollTop: false 
+    }"
+    x-init="
+        $watch('darkMode', value => {
+            localStorage.setItem('darkMode', JSON.stringify(value));
+            document.documentElement.classList.toggle('dark', value);
+        });
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => loaded = false, 500);
+        });
+    "
+    class="bg-gray-50 text-slate-900 dark:bg-gray-900 dark:text-gray-100 overflow-y-auto overflow-x-hidden w-full !p-0 !m-0"
+>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav me-auto">
-
-                        </ul>
-
-                        <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ms-auto">
-                            <!-- Authentication Links -->
-                            @guest
-                                @if (Route::has('login'))
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                    </li>
-                                @endif
-
-                                @if (Route::has('register'))
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                    </li>
-                                @endif
-                            @else
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
-                                    </a>
-
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                </li>
-                            @endguest
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        @endunless
-
-        <main class="{{ $isAuthPage ? 'min-h-screen p-0' : 'py-4' }}">
-            @yield('content')
-        </main>
+    {{-- ========= PRELOADER GLOBAL ========= --}}
+    <div x-show="loaded"
+        x-init="$watch('loaded', value => { if (!value) setTimeout(() => $el.remove(), 500) })"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        class="fixed inset-0 flex items-center justify-center w-screen h-screen preloader-mask">
+        <div class="h-16 w-16 animate-spin rounded-full spinner-border">
+        </div>
     </div>
+
+    {{-- ========= MAIN WRAPPER ========= --}}
+    <div id="app" class="min-h-screen flex flex-col">
+
+        @hasSection('layout')
+            @yield('layout')
+        @else
+            <main class="flex-1">
+                @yield('content')
+            </main>
+        @endif
+
+    </div>
+
+    <script src="{{ asset('build/assets/bundle.js') }}" defer></script>
     @stack('scripts')
 </body>
-
 </html>

@@ -1,41 +1,21 @@
-<!DOCTYPE html>
-<html lang="en" class="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@extends('layouts.app')
 
-    <link rel="stylesheet" href="{{ asset('build/assets/style.css') }}">
+@section('layout')
 
-    <img src="{{ asset('build/assets/src/images/logo/logo.svg') }}" class="w-10" />
+<div class="flex min-h-screen w-full overflow-hidden">
 
-    @vite(['resources/js/app.js'])
+    @include('layouts.partials.sidebar')
 
-</head>
+    <div class="flex flex-col w-full">
 
+        @include('layouts.partials.navbar')
 
-
-<body class="bg-gray-50 dark:bg-boxdark-2">
-    <div class="flex">
-
-        {{-- Sidebar --}}
-        @include('layouts.partials.sidebar')
-
-        {{-- Wrapper --}}
-        <div class="flex flex-col w-full">
-            @include('layouts.partials.navbar')
-
-            <main class="p-6">
-                @yield('content')
-            </main>
-        </div>
+        <main class="p-6 overflow-y-auto flex-1 w-full">
+            @yield('content')
+        </main>
 
     </div>
 
-    {{-- TailAdmin JS --}}
-    <script src="{{ asset('build/assets/bundle.js') }}" defer></script>
+</div>
 
-    {{-- Laravel Vite JS --}}
-    @vite(['resources/js/app.js'])
-</body>
-
-</html>
+@endsection
