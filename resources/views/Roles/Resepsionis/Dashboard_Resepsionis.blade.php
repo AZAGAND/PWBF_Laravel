@@ -1,184 +1,100 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.resepsionis')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Resepsionis</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body class="bg-gray-50">
-    <!-- Navigasi -->
-    <nav class="bg-blue-900 text-white sticky top-0 z-50 shadow-lg">
-        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-            <!-- Brand / Nama -->
-            <div class="flex items-center gap-2">
-                <span class="text-xl">📋</span>
-                <span class="font-bold text-lg">Dashboard Resepsionis</span>
-            </div>
-
-            <!-- User Info & Logout -->
-            <div class="flex items-center gap-4">
-                <span class="text-blue-100">Halo, <span
-                        class="font-semibold"><?= $_SESSION['nama'] ?? 'Resepsionis'; ?></span></span>
-                <a href="../../Views/Logout.php" class="relative font-medium pb-1 group inline-block">
-                    Logout
-                    <span
-                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-300 transition-all duration-300 group-hover:w-full"></span>
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="container mx-auto px-4 py-8">
-        <!-- Welcome Section -->
-        <div class="bg-gradient-to-r from-blue-900 to-blue-700 rounded-xl shadow-lg p-8 mb-8 text-white">
-            <h1 class="text-4xl font-bold mb-3">👋 Selamat Datang, Resepsionis!</h1>
-            <p class="text-blue-100 text-lg">Kelola registrasi pemilik, pet, dan jadwal temu dokter dengan mudah.</p>
+@section('content')
+    <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+        <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h2 class="text-title-md2 font-bold text-gray-800 dark:text-white">
+                Dashboard Resepsionis
+            </h2>
+            <p class="text-sm font-medium text-gray-500 dark:text-gray-400">
+                Selamat Datang kembali, {{ Auth::user()->nama }}! 👋
+            </p>
         </div>
 
-        <!-- Feature Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Card Registrasi -->
-            <div
-                class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                <div class="bg-green-600 text-white px-6 py-4">
-                    <h2 class="text-xl font-bold flex items-center gap-2">
-                        <span>✏️</span>
-                        <span>Registrasi</span>
-                    </h2>
-                </div>
-                <div class="p-6">
-                    <p class="text-gray-600 mb-6">Daftarkan pemilik dan hewan peliharaan baru ke sistem</p>
-                    <div class="space-y-3">
-                        <a href="Feature/registrasi_Pemilik.php"
-                            class="block bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold px-6 py-3 rounded-lg transition-colors duration-300 shadow-md">
-                            ➕ Registrasi Pemilik
-                        </a>
-                        <a href="Feature/registrasi_pet.php"
-                            class="block bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold px-6 py-3 rounded-lg transition-colors duration-300 shadow-md">
-                            ➕ Registrasi Pet
-                        </a>
-                    </div>
+        {{-- Statistics Grid --}}
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:gap-7.5">
+            {{-- Card 1: Total Pasien --}}
+            <div class="rounded-3xl border border-gray-200 bg-white p-6 shadow-default dark:border-gray-800 dark:bg-gray-900">
+                <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-blue-50 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400">
+                    <span class="text-xl">🐾</span>
                 </div>
 
-                <!-- Info tambahan -->
-                <div class="px-6 pb-6">
-                    <div class="bg-green-50 border-l-4 border-green-600 p-4 rounded">
-                        <div class="flex items-start gap-2">
-                            <span class="text-green-600 font-bold">ℹ️</span>
-                            <p class="text-sm text-gray-700">Mulai dengan registrasi pemilik, kemudian tambahkan data
-                                pet mereka</p>
-                        </div>
+                <div class="mt-4 flex items-end justify-between">
+                    <div>
+                        <h4 class="text-title-md font-bold text-black dark:text-white">
+                            0
+                        </h4>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Pasien</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Card Temu Dokter -->
-            <div
-                class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                <div class="bg-cyan-600 text-white px-6 py-4">
-                    <h2 class="text-xl font-bold flex items-center gap-2">
-                        <span>🩺</span>
-                        <span>Temu Dokter</span>
-                    </h2>
+            {{-- Card 2: Janji Temu Hari Ini --}}
+            <div class="rounded-3xl border border-gray-200 bg-white p-6 shadow-default dark:border-gray-800 dark:bg-gray-900">
+                <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-green-50 text-green-600 dark:bg-green-900/50 dark:text-green-400">
+                    <span class="text-xl">📅</span>
                 </div>
-                <div class="p-6">
-                    <p class="text-gray-600 mb-6">Kelola jadwal dan pendaftaran temu dengan dokter</p>
-                    <a href="Feature/temu_dokter.php"
-                        class="block bg-cyan-600 hover:bg-cyan-700 text-white text-center font-semibold px-6 py-3 rounded-lg transition-colors duration-300 shadow-md">
-                        📅 Daftar Temu Dokter
+
+                <div class="mt-4 flex items-end justify-between">
+                    <div>
+                        <h4 class="text-title-md font-bold text-black dark:text-white">
+                            0
+                        </h4>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Janji Temu Hari Ini</span>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Card 3: Menunggu Konfirmasi --}}
+            <div class="rounded-3xl border border-gray-200 bg-white p-6 shadow-default dark:border-gray-800 dark:bg-gray-900">
+                <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-yellow-50 text-yellow-600 dark:bg-yellow-900/50 dark:text-yellow-400">
+                    <span class="text-xl">⏳</span>
+                </div>
+
+                <div class="mt-4 flex items-end justify-between">
+                    <div>
+                        <h4 class="text-title-md font-bold text-black dark:text-white">
+                            0
+                        </h4>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Menunggu Konfirmasi</span>
+                    </div>
+                </div>
+            </div>
+
+             {{-- Card 4: Dokter Tersedia --}}
+             <div class="rounded-3xl border border-gray-200 bg-white p-6 shadow-default dark:border-gray-800 dark:bg-gray-900">
+                <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-teal-50 text-teal-600 dark:bg-teal-900/50 dark:text-teal-400">
+                    <span class="text-xl">👨‍⚕️</span>
+                </div>
+
+                <div class="mt-4 flex items-end justify-between">
+                    <div>
+                        <h4 class="text-title-md font-bold text-black dark:text-white">
+                            0
+                        </h4>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Dokter Tersedia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Welcome Section --}}
+        <div class="mt-8 rounded-3xl border border-gray-200 bg-white p-8 shadow-default dark:border-gray-800 dark:bg-gray-900">
+            <div class="flex flex-col gap-4">
+                <h3 class="text-2xl font-bold text-black dark:text-white">
+                    Halo, Resepsionis!
+                </h3>
+                <p class="font-medium text-gray-500 dark:text-gray-400">
+                    Anda dapat mengelola pendaftaran pasien, jadwal temu, dan antrian klinik melalui menu yang tersedia.
+                </p>
+                {{-- 
+                <div class="mt-4">
+                     <a href="#" class="inline-flex items-center justify-center rounded-lg bg-primary px-10 py-4 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10">
+                        Buat Pendaftaran Baru
                     </a>
                 </div>
-
-                <!-- Info tambahan -->
-                <div class="px-6 pb-6">
-                    <div class="bg-cyan-50 border-l-4 border-cyan-600 p-4 rounded">
-                        <div class="flex items-start gap-2">
-                            <span class="text-cyan-600 font-bold">ℹ️</span>
-                            <p class="text-sm text-gray-700">Buat jadwal temu pasien dengan dokter yang tersedia</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card Informasi -->
-            <div
-                class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                <div class="bg-yellow-500 text-gray-900 px-6 py-4">
-                    <h2 class="text-xl font-bold flex items-center gap-2">
-                        <span>💡</span>
-                        <span>Panduan</span>
-                    </h2>
-                </div>
-                <div class="p-6">
-                    <h3 class="font-bold text-gray-800 mb-3">Alur Kerja:</h3>
-                    <div class="space-y-3">
-                        <div class="flex items-start gap-3">
-                            <span
-                                class="inline-flex items-center justify-center w-6 h-6 bg-blue-600 text-white rounded-full text-sm font-bold flex-shrink-0">1</span>
-                            <p class="text-gray-700 text-sm">Registrasi pemilik baru beserta informasi lengkapnya</p>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span
-                                class="inline-flex items-center justify-center w-6 h-6 bg-blue-600 text-white rounded-full text-sm font-bold flex-shrink-0">2</span>
-                            <p class="text-gray-700 text-sm">Daftarkan hewan peliharaan milik pemilik tersebut</p>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span
-                                class="inline-flex items-center justify-center w-6 h-6 bg-blue-600 text-white rounded-full text-sm font-bold flex-shrink-0">3</span>
-                            <p class="text-gray-700 text-sm">Buat jadwal temu dokter sesuai kebutuhan pasien</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Stats Info -->
-                <div class="px-6 pb-6">
-                    <div class="bg-yellow-50 rounded-lg p-4">
-                        <h4 class="font-bold text-gray-800 mb-3 text-sm">Quick Stats</h4>
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-sm">
-                                <span class="text-gray-600">Pemilik Terdaftar:</span>
-                                <span class="font-bold text-gray-900">-</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-gray-600">Pet Terdaftar:</span>
-                                <span class="font-bold text-gray-900">-</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-gray-600">Jadwal Hari Ini:</span>
-                                <span class="font-bold text-gray-900">-</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Quick Tips -->
-        <div class="mt-8">
-            <div class="bg-blue-50 border-l-4 border-blue-900 rounded-lg p-6">
-                <div class="flex items-start gap-4">
-                    <div class="text-3xl">📌</div>
-                    <div>
-                        <h3 class="font-bold text-blue-900 mb-2">Tips Penting</h3>
-                        <p class="text-gray-700 leading-relaxed">Pastikan data pemilik dan pet sudah terdaftar sebelum
-                            membuat jadwal temu dokter. Verifikasi kembali informasi yang diinput untuk menghindari
-                            kesalahan data.</p>
-                    </div>
-                </div>
+                --}}
             </div>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="bg-blue-900 text-white py-6 px-4 mt-12">
-        <div class="container mx-auto text-center">
-            <p class="text-blue-200">&copy; 2024 RSHP Universitas Airlangga. All rights reserved.</p>
-        </div>
-    </footer>
-</body>
-
-</html>
+@endsection

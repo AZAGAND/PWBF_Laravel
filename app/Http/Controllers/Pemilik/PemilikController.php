@@ -11,4 +11,10 @@ class PemilikController extends Controller
     {
         return view('roles.pemilik.Dashboard_Pemilik');
     }
+
+    public function profile()
+    {
+        $user = auth()->user();
+        return view('Roles.Pemilik.Views.Profile', compact('user'));
+    }
 }

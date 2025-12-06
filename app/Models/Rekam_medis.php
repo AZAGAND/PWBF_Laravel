@@ -25,18 +25,18 @@ class Rekam_medis extends Model
     // rekam medis ini berasal dari reservasi temu_dokter mana
     public function temuDokter()
     {
-        return $this->belongsTo(TemuDokter::class, 'idreservasi_dokter', 'idreservasi_dokter');
+        return $this->belongsTo(Temu_dokter::class, 'idreservasi_dokter', 'idreservasi_dokter');
     }
 
     // siapa dokter pemeriksa (role_user record)
     public function dokterPemeriksa()
     {
-        return $this->belongsTo(RoleUser::class, 'dokter_pemeriksa', 'idrole_user');
+        return $this->belongsTo(Role_user::class, 'dokter_pemeriksa', 'idrole_user');
     }
 
     // detail tindakan/terapi yg dilakukan dalam satu rekam_medis
     public function detailRekamMedis()
     {
-        return $this->hasMany(DetailRekamMedis::class, 'idrekam_medis', 'idrekam_medis');
+        return $this->hasMany(Detail_rekam_medis::class, 'idrekam_medis', 'idrekam_medis');
     }
 }

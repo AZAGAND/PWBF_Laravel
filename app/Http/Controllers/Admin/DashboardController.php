@@ -53,4 +53,10 @@ class DashboardController extends Controller
     {
         return view('Roles.Admin.data_master');
     }
+
+    public function profile()
+    {
+        $user = auth()->user();
+        return view('Roles.Admin.Views.Profile', compact('user'));
+    }
 }

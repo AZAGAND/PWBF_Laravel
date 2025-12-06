@@ -29,11 +29,11 @@ class Pet extends Model
 
     public function rasHewan()
     {
-        return $this->belongsTo(Ras_Hewan::class, 'idras_hewan', 'idras_hewan');
+        return $this->belongsTo(Ras_hewan::class, 'idras_hewan', 'idras_hewan');
     }
 
     public function temuDokter()
     {
-        return $this->hasMany(Temu_Dokter::class, 'idpet', 'idpet');
+        return $this->hasMany(Temu_dokter::class, 'idpet', 'idpet');
     }
 }

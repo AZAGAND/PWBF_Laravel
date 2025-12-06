@@ -11,4 +11,10 @@ class ResepsionisController extends Controller
     {
         return view('Roles.Resepsionis.Dashboard_Resepsionis');
     }
+
+    public function profile()
+    {
+        $user = auth()->user();
+        return view('Roles.Resepsionis.Views.Profile', compact('user'));
+    }
 }

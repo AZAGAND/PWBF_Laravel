@@ -14,9 +14,9 @@ use App\Http\Controllers\Admin\Data_HewanController;
 use App\Http\Controllers\Admin\Data_KategoriController;
 use App\Http\Controllers\Admin\Kategori_KlinisController;
 use App\Http\Controllers\Admin\Kode_tindakan_terapiController;
-use app\Http\Controllers\Resepsionis\ResepsionisController;
-use app\Http\Controllers\Perawat\PerawatController;
-use app\Http\Controllers\Pemilik\PemilikController;
+use App\Http\Controllers\Resepsionis\ResepsionisController;
+use App\Http\Controllers\Perawat\PerawatController;
+use App\Http\Controllers\Pemilik\PemilikController;
 
 
 Route::get('/', function () {
@@ -25,9 +25,9 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [SiteController::class, 'index'])->name('site.home');
-route::get('/layanan', [SiteController::class, 'layanan'])->name('site.layanan');
-route::get('/visi-misi', [SiteController::class, 'visiMisi'])->name('site.visi-misi');
-route::get('/struktur-Organisasi', [SiteController::class, 'struktur'])->name('struktur_organisasi');
+Route::get('/layanan', [SiteController::class, 'layanan'])->name('site.layanan');
+Route::get('/visi-misi', [SiteController::class, 'visiMisi'])->name('site.visi-misi');
+Route::get('/struktur-Organisasi', [SiteController::class, 'struktur'])->name('struktur_organisasi');
 
 
 Auth::routes();
@@ -110,20 +110,36 @@ route::middleware('isAdministrator')->group(function() {
     route::get('data_kode_tindakan_terapi/{id}/edit', [Kode_tindakan_terapiController::class, 'edit'])->name('kode_tindakan_terapi.edit');
     route::put('data_kode_tindakan_terapi/{id}', [Kode_tindakan_terapiController::class, 'update'])->name('kode_tindakan_terapi.update');
     route::delete('data_kode_tindakan_terapi/{id}', [Kode_tindakan_terapiController::class, 'destroy'])->name('kode_tindakan_terapi.destroy');
+
+    // Profile
+    route::get('profile', [DashboardController::class, 'profile'])->name('admin.profile');
 });
 
 route::middleware('isResepsionis')->group(function() {
     route::get('Dashboard_Resepsionis', [ResepsionisController::class, 'Dashboard_Resepsionis'])->name('Dashboard_Resepsionis');
+    route::get('resepsionis/profile', [ResepsionisController::class, 'profile'])->name('resepsionis.profile');
 });
 
 route::middleware('isDokter')->group(function() {
     route::get('Dashboard_Dokter', [DokterController::class, 'Dashboard_Dokter'])->name('Dashboard_Dokter');
+    route::get('dokter/rekam-medis', [App\Http\Controllers\Dokter\RekamMedisDokterController::class, 'index'])->name('dokter.rekam_medis');
+    route::get('dokter/rekam-medis/{id}', [App\Http\Controllers\Dokter\RekamMedisDokterController::class, 'show'])->name('dokter.rekam_medis.show');
+    
+    // CRUD Detail Rekam Medis
+    route::post('dokter/rekam-medis/detail', [App\Http\Controllers\Dokter\RekamMedisDokterController::class, 'storeDetail'])->name('dokter.rekam_medis.detail.store');
+    route::put('dokter/rekam-medis/detail/{id}', [App\Http\Controllers\Dokter\RekamMedisDokterController::class, 'updateDetail'])->name('dokter.rekam_medis.detail.update');
+    route::delete('dokter/rekam-medis/detail/{id}', [App\Http\Controllers\Dokter\RekamMedisDokterController::class, 'destroyDetail'])->name('dokter.rekam_medis.detail.destroy');
+
+    // Profile
+    route::get('dokter/profile', [App\Http\Controllers\Dokter\DokterController::class, 'profile'])->name('dokter.profile');
 });
 
 route::middleware('isPerawat')->group(function() {
     route::get('Dashboard_Perawat', [PerawatController::class, 'Dashboard_Perawat'])->name('Dashboard_Perawat');
+    route::get('perawat/profile', [PerawatController::class, 'profile'])->name('perawat.profile');
 });
 
 route::middleware('isPemilik')->group(function() {
-    route::get('Dashboard_Pemilik', [PemilikController::class, 'Dashboadr_Pemilik'])->name('Dashboard_Pemilik');
+    route::get('Dashboard_Pemilik', [PemilikController::class, 'Dashboard_Pemilik'])->name('Dashboard_Pemilik');
+    route::get('pemilik/profile', [PemilikController::class, 'profile'])->name('pemilik.profile');
 });
