@@ -39,7 +39,7 @@
                         </td>
                         <td class="py-5 px-4">
                              <div class="bg-slate-700 text-white rounded-full px-4 py-1.5 text-sm font-bold inline-block shadow-sm">
-                                {{ $res->no_urut }}
+                                {{ substr(str_pad($res->no_urut, 7, '0', STR_PAD_LEFT), 0, 6) . '-' . substr(str_pad($res->no_urut, 7, '0', STR_PAD_LEFT), 6) }}
                              </div>
                         </td>
                         <td class="py-5 px-4">
@@ -49,9 +49,9 @@
                             <p class="text-black dark:text-white">{{ $res->dokter->user->nama ?? 'Dokter' }}</p>
                         </td>
                         <td class="py-5 px-4">
-                            @if($res->status == 'Selesai')
+                            @if($res->status == 'S' || $res->status == 'Selesai')
                                 <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold border border-green-200">Selesai</span>
-                            @elseif($res->status == 'Pending')
+                            @elseif($res->status == 'P' || $res->status == 'Pending')
                                 <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-semibold border border-yellow-200">Pending</span>
                             @else
                                 <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-semibold border border-gray-200">{{ $res->status }}</span>
@@ -65,9 +65,9 @@
                                 @csrf
                                 @method('PUT')
                                 <select name="status" class="py-1 px-2 rounded border border-gray-300 text-sm bg-white dark:bg-gray-800 dark:border-gray-600">
+                                    <option value="P" {{ ($res->status == 'P' || $res->status == 'Pending') ? 'selected' : '' }}>Pending</option>
+                                    <option value="S" {{ ($res->status == 'S' || $res->status == 'Selesai') ? 'selected' : '' }}>Selesai</option>
                                     <option value="Unknown" {{ $res->status == 'Unknown' ? 'selected' : '' }}>Unknown</option>
-                                    <option value="Pending" {{ $res->status == 'Pending' ? 'selected' : '' }}>Pending</option>
-                                    <option value="Selesai" {{ $res->status == 'Selesai' ? 'selected' : '' }}>Selesai</option>
                                     <option value="Batal" {{ $res->status == 'Batal' ? 'selected' : '' }}>Batal</option>
                                 </select>
                                 <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm flex items-center gap-1 transition">

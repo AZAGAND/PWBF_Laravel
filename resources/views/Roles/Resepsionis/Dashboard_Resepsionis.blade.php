@@ -2,99 +2,121 @@
 
 @section('content')
     <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-        <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <h2 class="text-title-md2 font-bold text-gray-800 dark:text-white">
-                Dashboard Resepsionis
-            </h2>
-            <p class="text-sm font-medium text-gray-500 dark:text-gray-400">
-                Selamat Datang kembali, {{ Auth::user()->nama }}! 👋
-            </p>
-        </div>
-
-        {{-- Statistics Grid --}}
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:gap-7.5">
-            {{-- Card 1: Total Pasien --}}
-            <div class="rounded-3xl border border-gray-200 bg-white p-6 shadow-default dark:border-gray-800 dark:bg-gray-900">
-                <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-blue-50 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400">
-                    <span class="text-xl">🐾</span>
-                </div>
-
-                <div class="mt-4 flex items-end justify-between">
-                    <div>
-                        <h4 class="text-title-md font-bold text-black dark:text-white">
-                            0
-                        </h4>
-                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Pasien</span>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Card 2: Janji Temu Hari Ini --}}
-            <div class="rounded-3xl border border-gray-200 bg-white p-6 shadow-default dark:border-gray-800 dark:bg-gray-900">
-                <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-green-50 text-green-600 dark:bg-green-900/50 dark:text-green-400">
-                    <span class="text-xl">📅</span>
-                </div>
-
-                <div class="mt-4 flex items-end justify-between">
-                    <div>
-                        <h4 class="text-title-md font-bold text-black dark:text-white">
-                            0
-                        </h4>
-                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Janji Temu Hari Ini</span>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Card 3: Menunggu Konfirmasi --}}
-            <div class="rounded-3xl border border-gray-200 bg-white p-6 shadow-default dark:border-gray-800 dark:bg-gray-900">
-                <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-yellow-50 text-yellow-600 dark:bg-yellow-900/50 dark:text-yellow-400">
-                    <span class="text-xl">⏳</span>
-                </div>
-
-                <div class="mt-4 flex items-end justify-between">
-                    <div>
-                        <h4 class="text-title-md font-bold text-black dark:text-white">
-                            0
-                        </h4>
-                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Menunggu Konfirmasi</span>
-                    </div>
-                </div>
-            </div>
-
-             {{-- Card 4: Dokter Tersedia --}}
-             <div class="rounded-3xl border border-gray-200 bg-white p-6 shadow-default dark:border-gray-800 dark:bg-gray-900">
-                <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-teal-50 text-teal-600 dark:bg-teal-900/50 dark:text-teal-400">
-                    <span class="text-xl">👨‍⚕️</span>
-                </div>
-
-                <div class="mt-4 flex items-end justify-between">
-                    <div>
-                        <h4 class="text-title-md font-bold text-black dark:text-white">
-                            0
-                        </h4>
-                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Dokter Tersedia</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {{-- Welcome Section --}}
-        <div class="mt-8 rounded-3xl border border-gray-200 bg-white p-8 shadow-default dark:border-gray-800 dark:bg-gray-900">
-            <div class="flex flex-col gap-4">
-                <h3 class="text-2xl font-bold text-black dark:text-white">
-                    Halo, Resepsionis!
-                </h3>
-                <p class="font-medium text-gray-500 dark:text-gray-400">
-                    Anda dapat mengelola pendaftaran pasien, jadwal temu, dan antrian klinik melalui menu yang tersedia.
+        
+        {{-- Welcome Banner --}}
+        <div class="rounded-2xl bg-blue-700 px-7.5 py-6 shadow-default mb-8 text-white">
+            <div class="flex flex-col gap-2">
+                <h2 class="text-3xl font-bold flex items-center gap-3">
+                    👋 Selamat Datang, Resepsionis!
+                </h2>
+                <p class="text-blue-100 text-lg">
+                    Kelola registrasi pemilik, pet, dan jadwal temu dokter dengan mudah.
                 </p>
-                {{-- 
-                <div class="mt-4">
-                     <a href="#" class="inline-flex items-center justify-center rounded-lg bg-primary px-10 py-4 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10">
-                        Buat Pendaftaran Baru
-                    </a>
-                </div>
-                --}}
             </div>
         </div>
+
+        {{-- Cards Container --}}
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3 mb-8">
+            
+            {{-- Registrasi Card --}}
+            <div class="rounded-xl border border-gray-200 bg-white shadow-default dark:border-gray-800 dark:bg-gray-900 overflow-hidden flex flex-col h-full">
+                <div class="bg-green-500 px-6 py-3">
+                    <h3 class="text-white text-xl font-bold flex items-center gap-2">
+                        ✏️ Registrasi
+                    </h3>
+                </div>
+                <div class="p-6 flex flex-col flex-1 justify-between">
+                    <p class="text-gray-500 mb-6 text-sm">
+                        Daftarkan pemilik dan hewan peliharaan baru ke sistem
+                    </p>
+                    <div class="flex flex-col gap-3">
+                        <a href="{{ route('resepsionis.pemilik.create') }}" class="w-full inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-center font-medium text-white hover:bg-blue-700 transition">
+                            + Registrasi Pemilik
+                        </a>
+                        <a href="{{ route('resepsionis.hewan.create') }}" class="w-full inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-center font-medium text-white hover:bg-blue-700 transition">
+                            + Registrasi Pet
+                        </a>
+                    </div>
+                    <div class="mt-4 rounded-md bg-green-50 p-3 flex items-start gap-2 text-xs text-green-700">
+                        <span>ℹ️</span>
+                        <p>Mulai dengan registrasi pemilik, kemudian tambahkan data pet mereka.</p>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Temu Dokter Card --}}
+            <div class="rounded-xl border border-gray-200 bg-white shadow-default dark:border-gray-800 dark:bg-gray-900 overflow-hidden flex flex-col h-full">
+                <div class="bg-[#0ea5e9] px-6 py-3"> {{-- Teal/Cyan Color --}}
+                    <h3 class="text-white text-xl font-bold flex items-center gap-2">
+                        🩺 Temu Dokter
+                    </h3>
+                </div>
+                <div class="p-6 flex flex-col flex-1 justify-between">
+                    <p class="text-gray-500 mb-6 text-sm">
+                        Kelola jadwal dan pendaftaran temu dengan dokter
+                    </p>
+                    <div>
+                        <a href="{{ route('resepsionis.temu_dokter') }}" class="w-full inline-flex items-center justify-center rounded-lg bg-[#0ea5e9] px-6 py-3 text-center font-medium text-white hover:bg-sky-600 transition">
+                            🗓️ Daftar Temu Dokter
+                        </a>
+                    </div>
+                    <div class="mt-6 rounded-md bg-sky-50 p-3 flex items-start gap-2 text-xs text-sky-700">
+                        <span>ℹ️</span>
+                        <p>Buat jadwal temu pasien dengan dokter yang tersedia</p>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Panduan Card --}}
+            <div class="rounded-xl border border-gray-200 bg-white shadow-default dark:border-gray-800 dark:bg-gray-900 overflow-hidden flex flex-col h-full">
+                <div class="bg-amber-500 px-6 py-3">
+                    <h3 class="text-white text-xl font-bold flex items-center gap-2">
+                        💡 Panduan
+                    </h3>
+                </div>
+                <div class="p-6 flex flex-col flex-1">
+                    <div class="mb-4">
+                        <h4 class="font-bold text-sm text-black dark:text-white mb-2">Alur Kerja:</h4>
+                        <ol class="list-decimal list-inside text-xs text-gray-500 space-y-1 ml-1">
+                            <li class="pl-2 relative">Registrasi pemilik baru beserta informasi lengkapnya</li>
+                            <li class="pl-2 relative">Daftarkan hewan peliharaan milik pemilik tersebut</li>
+                            <li class="pl-2 relative">Buat jadwal temu dokter sesuai kebutuhan pasien</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="mt-auto bg-amber-50 rounded-lg p-4">
+                        <h4 class="font-bold text-xs text-amber-800 mb-2">Quick Stats</h4>
+                        <div class="space-y-1 text-xs text-amber-700">
+                            <div class="flex justify-between">
+                                <span>Pemilik Terdaftar:</span>
+                                <span class="font-bold">-</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Pet Terdaftar:</span>
+                                <span class="font-bold">-</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Jadwal Hari Ini:</span>
+                                <span class="font-bold">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Tips Penting --}}
+        <div class="rounded-xl bg-blue-50 p-6 shadow-sm border-l-4 border-blue-600">
+            <div class="flex items-start gap-3">
+                <span class="text-2xl text-red-500">📌</span>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-1">Tips Penting</h3>
+                    <p class="text-sm text-gray-600">
+                        Pastikan data pemilik dan pet sudah terdaftar sebelum membuat jadwal temu dokter. Verifikasi kembali informasi yang diinput untuk menghindari kesalahan data.
+                    </p>
+                </div>
+            </div>
+        </div>
+
     </div>
 @endsection
