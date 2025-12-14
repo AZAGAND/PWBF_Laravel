@@ -137,6 +137,18 @@ route::middleware('isDokter')->group(function() {
 route::middleware('isPerawat')->group(function() {
     route::get('Dashboard_Perawat', [PerawatController::class, 'Dashboard_Perawat'])->name('Dashboard_Perawat');
     route::get('perawat/profile', [PerawatController::class, 'profile'])->name('perawat.profile');
+    
+    // Rekam Medis
+    route::get('perawat/rekam-medis', [PerawatController::class, 'rekamMedis'])->name('perawat.rekam_medis');
+    route::post('perawat/rekam-medis', [PerawatController::class, 'storeRekamMedis'])->name('perawat.rekam_medis.store');
+    route::get('perawat/rekam-medis/{id}/edit', [PerawatController::class, 'edit'])->name('perawat.rekam_medis.edit');
+    route::put('perawat/rekam-medis/{id}', [PerawatController::class, 'update'])->name('perawat.rekam_medis.update');
+    route::get('perawat/rekam-medis/{id}', [PerawatController::class, 'show'])->name('perawat.rekam_medis.show');
+    
+    // Reservasi
+    route::get('perawat/reservasi', [PerawatController::class, 'reservasi'])->name('perawat.reservasi');
+    route::put('perawat/reservasi/{id}', [PerawatController::class, 'updateReservasi'])->name('perawat.reservasi.update');
+    route::delete('perawat/reservasi/{id}', [PerawatController::class, 'destroyReservasi'])->name('perawat.reservasi.destroy');
 });
 
 route::middleware('isPemilik')->group(function() {

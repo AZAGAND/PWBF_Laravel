@@ -29,11 +29,11 @@ class Temu_dokter extends Model
 
     public function dokter()
     {
-        return $this->belongsTo(RoleUser::class, 'idrole_user', 'idrole_user');
+        return $this->belongsTo(Role_user::class, 'idrole_user', 'idrole_user');
     }
 
     public function rekamMedis()
     {
-        return $this->hasMany(RekamMedis::class, 'idreservasi_dokter', 'idreservasi_dokter');
+        return $this->hasMany(Rekam_medis::class, 'idreservasi_dokter', 'idreservasi_dokter');
     }
 }
