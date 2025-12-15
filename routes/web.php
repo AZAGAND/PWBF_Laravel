@@ -24,10 +24,9 @@ use App\Http\Controllers\Perawat\EditRekamMedisController;
 use App\Http\Controllers\Perawat\DetailRekamMedisController;
 use App\Http\Controllers\Perawat\ReservasiController;
 use App\Http\Controllers\Pemilik\PemilikController;
-
-
 use App\Http\Controllers\Pemilik\ListHewanController;
 use App\Http\Controllers\Pemilik\ListReservasiController;
+use App\Http\Controllers\Pemilik\ListDetailRekamMedisController;
 use App\Http\Controllers\Pemilik\ListRekamMedisController;
 
 
@@ -239,5 +238,9 @@ route::middleware('isPemilik')->group(function() {
     
     Route::controller(ListRekamMedisController::class)->group(function () {
         route::get('pemilik/rekam-medis', 'index')->name('pemilik.rekam_medis');
+    });
+
+    Route::controller(ListDetailRekamMedisController::class)->group(function () {
+        route::get('pemilik/rekam-medis/{id}', 'show')->name('pemilik.rekam_medis.show');
     });
 });

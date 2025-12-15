@@ -4,13 +4,9 @@
     <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
         
         {{-- Header --}}
-        <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 class="text-title-md2 font-bold text-gray-800 dark:text-white">
                 📄 Detail Rekam Medis
             </h2>
-            <div class="flex items-center gap-2 text-sm font-medium text-gray-800 dark:text-white">
-                <span>{{ $rekamMedis->nama_hewan }} ({{ $rekamMedis->nama_jenis_hewan }})</span>
-            </div>
         </div>
 
         {{-- Info Card --}}
@@ -22,6 +18,12 @@
             </div>
             <div class="p-4 sm:p-6 xl:p-7.5">
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div>
+                        <label class="mb-2 block text-sm font-medium text-gray-500">Nama Hewan</label>
+                        <p class="font-semibold text-black dark:text-white">
+                            {{ $rekamMedis->nama_hewan }} ({{ $rekamMedis->nama_jenis_hewan }})
+                        </p>
+                    </div>
                     <div>
                         <label class="mb-2 block text-sm font-medium text-gray-500">Tanggal Pemeriksaan</label>
                         <p class="font-semibold text-black dark:text-white">

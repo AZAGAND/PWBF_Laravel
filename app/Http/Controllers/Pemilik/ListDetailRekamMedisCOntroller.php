@@ -36,11 +36,14 @@ class ListDetailRekamMedisController extends Controller
                 'rekam_medis.*',
                 'pet.nama as nama_hewan',
                 'pet.tanggal_lahir',
-                'pet.gender',
+                'pet.jenis_kelamin as gender',
                 'ras_hewan.nama_ras',
                 'jenis_hewan.nama_jenis_hewan',
                 'temu_dokter.tanggal as tanggal_periksa',
-                'temu_dokter.keluhan',
+                DB::raw('NULL as keluhan'),
+                'rekam_medis.anamnesa as keterangan',
+                DB::raw('NULL as suhu_tubuh'),
+                DB::raw('NULL as berat_badan'),
                 DB::raw('COALESCE(u_pemeriksa.nama, u_reservasi.nama) as nama_dokter')
             )
             ->first();
@@ -53,15 +56,10 @@ class ListDetailRekamMedisController extends Controller
             ->where('detail_rekam_medis.idrekam_medis', $id)
             ->select(
                 'detail_rekam_medis.*',
-                'kode_tindakan_terapi.nama_tindakan',
-                'kode_tindakan_terapi.biaya' 
+                'kode_tindakan_terapi.deskripsi_tindakan_terapi as nama_tindakan'
             )
             ->get();
-        $details = DB::table('detail_rekam_medis')
-            ->join('kode_tindakan_terapi', 'detail_rekam_medis.idkode_tindakan_terapi', '=', 'kode_tindakan_terapi.idkode_tindakan_terapi')
-            ->where('detail_rekam_medis.idrekam_medis', $id)
-            ->select('detail_rekam_medis.*', 'kode_tindakan_terapi.*')
-            ->get();
+
 
 
         return view('Roles.Pemilik.Views.detail_rekam_medis', compact('rekamMedis', 'details'));
