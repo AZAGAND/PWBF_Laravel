@@ -67,7 +67,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        $user->roles()->detach();
+        // $user->roles()->detach(); // Keep roles for soft delete restoration
         $user->delete();
         return redirect()->route('data_user')->with('success', 'User berhasil dihapus');
     }
@@ -90,5 +90,25 @@ class UserController extends Controller
         ]);
 
         return redirect()->route('data_user')->with('success', 'Password berhasil diubah');
+    }
+    public function trash()
+    {
+        $users = User::onlyTrashed()->get();
+        return view('Roles.Admin.Views.Trash_User', compact('users'));
+    }
+
+    public function restore($id)
+    {
+        $user = User::onlyTrashed()->findOrFail($id);
+        $user->restore();
+        return redirect()->route('users.trash')->with('success', 'User berhasil dipulihkan');
+    }
+
+    public function forceDelete($id)
+    {
+        $user = User::onlyTrashed()->findOrFail($id);
+        $user->roles()->detach(); // Detach roles before permanent delete
+        $user->forceDelete();
+        return redirect()->route('users.trash')->with('success', 'User berhasil dihapus permanen');
     }
 }

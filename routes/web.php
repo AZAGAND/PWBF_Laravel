@@ -52,6 +52,7 @@ route::middleware('isAdministrator')->group(function() {
 
     Route::controller(UserController::class)->group(function () {
         route::get('data_user', 'DataUser')->name('data_user');
+        route::get('users/trash', 'trash')->name('users.trash');
         route::get('users/create', 'create')->name('users.create');
         route::post('users', 'store')->name('users.store');
         route::get('users/{user}/edit', 'edit')->name('users.edit');
@@ -59,6 +60,8 @@ route::middleware('isAdministrator')->group(function() {
         route::delete('users/{user}', 'destroy')->name('users.destroy');
         route::get('users/{user}/password', 'password')->name('users.password');
         route::put('users/{user}/password', 'updatePassword')->name('users.update_password');
+        route::post('users/{id}/restore', 'restore')->name('users.restore');
+        route::delete('users/{id}/force-delete', 'forceDelete')->name('users.force_delete');
     });
 
     // Role Management
