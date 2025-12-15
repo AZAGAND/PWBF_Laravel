@@ -55,4 +55,25 @@ class Jenis_HewanController extends Controller
 
         return redirect()->route('jenis_hewan')->with('success', 'Jenis hewan berhasil dihapus');
     }
+    public function trash()
+    {
+        $jenisHewans = Jenis_hewan::onlyTrashed()->all();
+        return view('Roles.Admin.Views.Trash_Jenis_Hewan', compact('jenisHewans'));
+    }
+
+    public function restore($id)
+    {
+        $jenisHewan = Jenis_hewan::onlyTrashed()->findOrFail($id);
+        $jenisHewan->restore();
+
+        return redirect()->route('jenis.trash')->with('success', 'Jenis hewan berhasil dipulihkan');
+    }
+
+    public function forceDelete($id)
+    {
+        $jenisHewan = Jenis_hewan::onlyTrashed()->findOrFail($id);
+        $jenisHewan->forceDelete();
+
+        return redirect()->route('jenis.trash')->with('success', 'Jenis hewan berhasil dihapus permanen');
+    }
 }

@@ -33,27 +33,32 @@
                     </h3>
                 </div>
                 
-                @if (Route::has('users.create'))
-                    <a href="{{ route('users.trash') }}"
-                       class="inline-flex items-center justify-center gap-2.5 rounded-lg bg-red-600 px-4 py-2 text-center font-medium text-white hover:bg-red-700 lg:px-6">
-                       <span>
-                            <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13.7535 2.47502C13.5186 2.24003 13.2386 2.12253 12.9135 2.12253C12.5885 2.12253 12.3085 2.24003 12.0735 2.47502L2.55855 11.9875C2.51855 12.025 2.48355 12.07 2.45605 12.115L1.01855 15.6575C1.00605 15.6875 1.00105 15.72 1.00105 15.7525C1.00105 15.8275 1.02605 15.8975 1.07605 15.9475C1.12605 15.9975 1.19605 16.0225 1.27105 16.0225C1.30355 16.0225 1.33605 16.0175 1.36605 16.0025L4.90855 14.5675C4.94855 14.5375 4.99355 14.4975 5.03105 14.4575L14.5461 4.94502C14.7811 4.71003 14.8986 4.43003 14.8986 4.10502C14.8986 3.78003 14.7811 3.50003 14.5461 3.26502L13.7535 2.47502Z" fill="white"/>
-                            </svg>
-                       </span>
-                       Sampah
-                    </a>
-                    <a href="{{ route('users.create') }}"
-                       class="inline-flex items-center justify-center gap-2.5 rounded-lg bg-blue-600 px-4 py-2 text-center font-medium text-white hover:bg-blue-700 lg:px-6">
-                        <span>
-                            <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10 4.16666V15.8333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M4.16669 10H15.8334" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </span>
-                        Tambah User
-                    </a>
-                @endif
+                <div>
+                    @if (Route::has('users.trash'))
+                        <a href="{{ route('users.trash') }}"
+                           class="inline-flex items-center justify-center gap-2.5 rounded-lg bg-orange-600 px-4 py-2 text-center font-medium text-white hover:bg-orange-700 lg:px-6 mr-2">
+                            <span>
+                                <svg class="fill-current" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 18a1 1 0 001-1v-6a1 1 0 00-2 0v6a1 1 0 001 1zM20 6h-4V4c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v2H4a1 1 0 000 2h1v11c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h1a1 1 0 000-2zM9 4h6v2H9V4zm8 16H7V8h10v12z" fill="currentColor"/>
+                                </svg>
+                            </span>
+                            Sampah
+                        </a>
+                    @endif
+
+                    @if (Route::has('users.create'))
+                        <a href="{{ route('users.create') }}"
+                           class="inline-flex items-center justify-center gap-2.5 rounded-lg bg-blue-600 px-4 py-2 text-center font-medium text-white hover:bg-blue-700 lg:px-6">
+                            <span>
+                                <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 4.16666V15.8333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.16669 10H15.8334" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            Tambah User
+                        </a>
+                    @endif
+                </div>
             </div>
 
             <div class="max-w-full overflow-x-auto">

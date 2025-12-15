@@ -59,4 +59,26 @@ class Ras_HewanController extends Controller
 
         return redirect()->route('ras_hewan')->with('success', 'Data ras hewan berhasil dihapus');
     }
+
+    public function trash()
+    {
+        $rasHewans = Ras_hewan::onlyTrashed()->with('jenisHewan')->get();
+        return view('Roles.Admin.Views.Trash_Ras_Hewan', compact('rasHewans'));
+    }
+
+    public function restore($id)
+    {
+        $rasHewan = Ras_hewan::onlyTrashed()->findOrFail($id);
+        $rasHewan->restore();
+
+        return redirect()->route('ras.trash')->with('success', 'Data ras hewan berhasil dipulihkan');
+    }
+
+    public function forceDelete($id)
+    {
+        $rasHewan = Ras_hewan::onlyTrashed()->findOrFail($id);
+        $rasHewan->forceDelete();
+
+        return redirect()->route('ras.trash')->with('success', 'Data ras hewan berhasil dihapus permanen');
+    }
 }

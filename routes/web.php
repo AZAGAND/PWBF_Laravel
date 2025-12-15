@@ -52,54 +52,66 @@ route::middleware('isAdministrator')->group(function() {
 
     Route::controller(UserController::class)->group(function () {
         route::get('data_user', 'DataUser')->name('data_user');
-        route::get('users/trash', 'trash')->name('users.trash');
+        route::get('users/trash', 'trash')->name('users.trash'); // Trash Route
         route::get('users/create', 'create')->name('users.create');
         route::post('users', 'store')->name('users.store');
         route::get('users/{user}/edit', 'edit')->name('users.edit');
         route::put('users/{user}', 'update')->name('users.update');
         route::delete('users/{user}', 'destroy')->name('users.destroy');
+        route::put('users/{id}/restore', 'restore')->name('users.restore'); // Restore Route
+        route::delete('users/{id}/force-delete', 'forceDelete')->name('users.force_delete'); // Force Delete Route
         route::get('users/{user}/password', 'password')->name('users.password');
         route::put('users/{user}/password', 'updatePassword')->name('users.update_password');
-        route::post('users/{id}/restore', 'restore')->name('users.restore');
-        route::delete('users/{id}/force-delete', 'forceDelete')->name('users.force_delete');
     });
 
     // Role Management
     Route::controller(RoleController::class)->group(function () {
         route::get('data_role', 'DataRole')->name('data_role');
+        route::get('roles/trash', 'trash')->name('role.trash'); // Trash Route
         route::get('roles/create', 'create')->name('roles.create');
         route::post('roles', 'store')->name('roles.store');
         route::get('roles/{id}/edit', 'edit')->name('roles.edit');
         route::put('roles/{id}', 'update')->name('roles.update');
         route::delete('roles/{id}', 'destroy')->name('roles.delete');
         route::patch('roles/{id}/toggle', 'toggleStatus')->name('roles.toggle');
+        route::put('roles/{id}/restore', 'restore')->name('role.restore'); // Restore Route
+        route::delete('roles/{id}/force-delete', 'forceDelete')->name('role.force_delete'); // Force Delete Route
     });
 
     Route::controller(Ras_HewanController::class)->group(function () {
         route::get('ras_hewan', 'DataRasHewan')->name('ras_hewan');
+        route::get('ras_hewan/trash', 'trash')->name('ras.trash'); // Trash
         route::get('ras_hewan/create', 'create')->name('ras.create');
         route::post('ras_hewan', 'store')->name('ras.store');
         route::get('ras_hewan/{id}/edit', 'edit')->name('ras.edit');
         route::put('ras_hewan/{id}', 'update')->name('ras.update');
         route::delete('ras_hewan/{id}', 'destroy')->name('ras.destroy');
+        route::put('ras_hewan/{id}/restore', 'restore')->name('ras.restore'); // Restore
+        route::delete('ras_hewan/{id}/force-delete', 'forceDelete')->name('ras.force_delete'); // Force Delete
     });
 
     Route::controller(Jenis_HewanController::class)->group(function () {
         route::get('jenis_hewan', 'DataJenisHewan')->name('jenis_hewan');
+        route::get('jenis_hewan/trash', 'trash')->name('jenis.trash'); // Trash
         route::get('jenis_hewan/create', 'create')->name('jenis.create');
         route::post('jenis_hewan', 'store')->name('jenis.store');
         route::get('jenis_hewan/{id}/edit', 'edit')->name('jenis.edit');
         route::put('jenis_hewan/{id}', 'update')->name('jenis.update');
         route::delete('jenis_hewan/{id}', 'destroy')->name('jenis.destroy');
+        route::put('jenis_hewan/{id}/restore', 'restore')->name('jenis.restore'); // Restore
+        route::delete('jenis_hewan/{id}/force-delete', 'forceDelete')->name('jenis.force_delete'); // Force Delete
     });
 
     Route::controller(DataPemilikController::class)->group(function () {
         route::get('data_pemilik', 'DataPemilik')->name('data_pemilik');
+        route::get('data_pemilik/trash', 'trash')->name('pemilik.trash'); // Trash Route
         route::get('data_pemilik/create', 'create')->name('pemilik.create');
         route::post('data_pemilik', 'store')->name('pemilik.store');
         route::get('data_pemilik/{id}/edit', 'edit')->name('pemilik.edit');
         route::put('data_pemilik/{id}', 'update')->name('pemilik.update');
         route::delete('data_pemilik/{id}', 'destroy')->name('pemilik.destroy');
+        route::put('data_pemilik/{id}/restore', 'restore')->name('pemilik.restore'); // Restore Route
+        route::delete('data_pemilik/{id}/force-delete', 'forceDelete')->name('pemilik.force_delete'); // Force Delete Route
     });
 
     Route::controller(Data_DokterController::class)->group(function () {
@@ -113,38 +125,50 @@ route::middleware('isAdministrator')->group(function() {
     
     Route::controller(Data_HewanController::class)->group(function () {
         route::get('data_hewan', 'DataHewan')->name('data_hewan');
+        route::get('data_hewan/trash', 'trash')->name('hewan.trash'); // Trash
         route::get('data_hewan/create', 'create')->name('hewan.create');
         route::post('data_hewan', 'store')->name('hewan.store');
         route::get('data_hewan/{id}/edit', 'edit')->name('hewan.edit');
         route::put('data_hewan/{id}', 'update')->name('hewan.update');
         route::delete('data_hewan/{id}', 'destroy')->name('hewan.destroy');
+        route::put('data_hewan/{id}/restore', 'restore')->name('hewan.restore'); // Restore
+        route::delete('data_hewan/{id}/force-delete', 'forceDelete')->name('hewan.force_delete'); // Force Delete
     });
     
     Route::controller(Data_KategoriController::class)->group(function () {
         route::get('data_kategori', 'DataKategori')->name('data_kategori');
+        route::get('data_kategori/trash', 'trash')->name('kategori.trash'); // Trash
         route::get('data_kategori/create', 'create')->name('kategori.create');
         route::post('data_kategori', 'store')->name('kategori.store');
         route::get('data_kategori/{id}/edit', 'edit')->name('kategori.edit');
         route::put('data_kategori/{id}', 'update')->name('kategori.update');
         route::delete('data_kategori/{id}', 'destroy')->name('kategori.destroy');
+        route::put('data_kategori/{id}/restore', 'restore')->name('kategori.restore'); // Restore
+        route::delete('data_kategori/{id}/force-delete', 'forceDelete')->name('kategori.force_delete'); // Force Delete
     });
     
     Route::controller(Kategori_KlinisController::class)->group(function () {
         route::get('data_kategori_klinis', 'DataKategoriKlinis')->name('data_kategori_klinis');
+        route::get('data_kategori_klinis/trash', 'trash')->name('kategori_klinis.trash'); // Trash
         route::get('data_kategori_klinis/create', 'create')->name('kategori_klinis.create');
         route::post('data_kategori_klinis', 'store')->name('kategori_klinis.store');
         route::get('data_kategori_klinis/{id}/edit', 'edit')->name('kategori_klinis.edit');
         route::put('data_kategori_klinis/{id}', 'update')->name('kategori_klinis.update');
         route::delete('data_kategori_klinis/{id}', 'destroy')->name('kategori_klinis.destroy');
+        route::put('data_kategori_klinis/{id}/restore', 'restore')->name('kategori_klinis.restore'); // Restore
+        route::delete('data_kategori_klinis/{id}/force-delete', 'forceDelete')->name('kategori_klinis.force_delete'); // Force Delete
     });
     
     Route::controller(Kode_tindakan_terapiController::class)->group(function () {
         route::get('data_kode_tindakan_terapi', 'DataKodeTindakanTerapi')->name('data_kode_tindakan_terapi');
+        route::get('data_kode_tindakan_terapi/trash', 'trash')->name('kode_tindakan_terapi.trash'); // Trash
         route::get('data_kode_tindakan_terapi/create', 'create')->name('kode_tindakan_terapi.create');
         route::post('data_kode_tindakan_terapi', 'store')->name('kode_tindakan_terapi.store');
         route::get('data_kode_tindakan_terapi/{id}/edit', 'edit')->name('kode_tindakan_terapi.edit');
         route::put('data_kode_tindakan_terapi/{id}', 'update')->name('kode_tindakan_terapi.update');
         route::delete('data_kode_tindakan_terapi/{id}', 'destroy')->name('kode_tindakan_terapi.destroy');
+        route::put('data_kode_tindakan_terapi/{id}/restore', 'restore')->name('kode_tindakan_terapi.restore'); // Restore
+        route::delete('data_kode_tindakan_terapi/{id}/force-delete', 'forceDelete')->name('kode_tindakan_terapi.force_delete'); // Force Delete
     });
 });
 

@@ -5,19 +5,19 @@
         
         <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 class="text-title-md2 font-bold text-black dark:text-white">
-                Sampah User
+                Sampah Data Kategori Klinis
             </h2>
 
             <nav>
                 <ol class="flex items-center gap-2">
                     <li>
-                        <a class="font-medium text-gray-500 dark:text-gray-400" href="{{ route('data_master') }}">
+                        <a class="font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" href="{{ route('data_master') }}">
                             Dashboard /
                         </a>
                     </li>
                     <li>
-                        <a class="font-medium text-gray-500 dark:text-gray-400" href="{{ route('data_user') }}">
-                            Data User /
+                        <a class="font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" href="{{ route('data_kategori_klinis') }}">
+                            Data Kategori Klinis /
                         </a>
                     </li>
                     <li class="font-medium text-gray-500 dark:text-gray-400">
@@ -34,11 +34,11 @@
             <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                     <h3 class="text-xl font-semibold text-gray-800 dark:text-white">
-                        List User Terhapus
+                        List Kategori Klinis Terhapus
                     </h3>
                 </div>
                 
-                <a href="{{ route('data_user') }}"
+                <a href="{{ route('data_kategori_klinis') }}"
                    class="inline-flex items-center justify-center gap-2.5 rounded-lg bg-gray-600 px-4 py-2 text-center font-medium text-white hover:bg-gray-700 lg:px-6">
                     <span>
                         ⬅ Kembali
@@ -59,14 +59,8 @@
                             <th class="min-w-[50px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
                                 No
                             </th>
-                            <th class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
-                                Nama
-                            </th>
-                            <th class="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white">
-                                Email
-                            </th>
-                            <th class="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
-                                Role
+                            <th class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white">
+                                Nama Kategori Klinis
                             </th>
                             <th class="py-4 px-4 font-medium text-black dark:text-white text-center">
                                 Aksi
@@ -74,43 +68,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($users as $i => $u)
-                            <tr class="transition-colors border-b border-[#eee] dark:border-strokedark">
+                        @forelse ($kategori_klinis as $i => $item)
+                            <tr class="transition-colors border-b border-[#eee] dark:border-strokedark hover:bg-gray-5 dark:hover:bg-gray-800">
                                 <td class="py-5 px-4 pl-9 xl:pl-11">
                                     <h5 class="font-medium text-black dark:text-white">{{ $i + 1 }}</h5>
                                 </td>
-                                <td class="py-5 px-4 pl-9 xl:pl-11">
-                                    <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
-                                        <div class="h-12.5 w-15 rounded-md">
-                                             <div class="h-10 w-10 overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-300 font-bold">
-                                                {{ substr($u->nama, 0, 1) }}
-                                            </div>
-                                        </div>
-                                        <p class="text-sm text-black dark:text-white font-medium ml-3">
-                                            {{ $u->nama }}
-                                        </p>
-                                    </div>
-                                </td>
                                 <td class="py-5 px-4">
-                                    <p class="text-black dark:text-white">
-                                        {{ $u->email }}
+                                    <p class="text-black dark:text-white font-medium">
+                                        {{ $item->nama_kategori_klinis }}
                                     </p>
                                 </td>
                                 <td class="py-5 px-4">
-                                    <div class="flex flex-wrap gap-2">
-                                        @forelse($u->roles as $role)
-                                            <span class="text-sm font-medium text-gray-500 dark:text-gray-400">
-                                                {{ $role->nama_role }}
-                                            </span>
-                                        @empty
-                                            <span class="text-sm text-gray-400 dark:text-gray-500">No Role</span>
-                                        @endforelse
-                                    </div>
-                                </td>
-                                <td class="py-5 px-4">
-                                    <div class="flex flex-wrap items-center justify-center gap-2 dark:text-white">
+                                    <div class="flex flex-wrap items-center justify-center gap-2">
                                         {{-- Restore --}}
-                                        <form action="{{ route('users.restore', $u->iduser) }}" method="POST" class="inline-block">
+                                        <form action="{{ route('kategori_klinis.restore', $item->idkategori_klinis) }}" method="POST" class="inline-block">
                                             @csrf
                                             @method('PUT')
                                             <button type="submit" class="inline-flex items-center gap-1.5 rounded bg-green-100 px-2.5 py-1.5 text-xs font-medium text-green-600 hover:bg-green-200 dark:bg-green-900/30 dark:text-green-400 dark:hover:bg-green-900/50 transition" title="Restore">
@@ -123,7 +94,7 @@
                                         </form>
 
                                         {{-- Force Delete --}}
-                                        <form action="{{ route('users.force_delete', $u->iduser) }}" method="POST" onsubmit="return confirm('Hapus permanen user {{ $u->nama }}? Tindakan ini tidak dapat dibatalkan!');" class="inline-block">
+                                        <form action="{{ route('kategori_klinis.force_delete', $item->idkategori_klinis) }}" method="POST" onsubmit="return confirm('Hapus permanen kategori klinis {{ $item->nama_kategori_klinis }}?');" class="inline-block">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="inline-flex items-center gap-1.5 rounded bg-red-100 px-2.5 py-1.5 text-xs font-medium text-red-600 hover:bg-red-200 dark:bg-red-900/30 dark:text-red-400 dark:hover:bg-red-900/50 transition" title="Hapus Permanen">
@@ -140,8 +111,8 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="py-5 px-4 text-center dark:border-strokedark">
-                                    <p class="text-gray-500 dark:text-gray-400">Tidak ada user dihapus.</p>
+                                <td colspan="3" class="py-5 px-4 text-center dark:border-strokedark">
+                                    <p class="text-gray-500 dark:text-gray-400">Tidak ada data kategori klinis dihapus.</p>
                                 </td>
                             </tr>
                         @endforelse

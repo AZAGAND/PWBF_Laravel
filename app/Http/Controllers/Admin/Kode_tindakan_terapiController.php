@@ -65,4 +65,26 @@ class Kode_tindakan_terapiController extends Controller
 
         return redirect()->route('data_kode_tindakan_terapi')->with('success', 'Data kode tindakan terapi berhasil dihapus');
     }
+
+    public function trash()
+    {
+        $kode_tindakan_terapis = Kode_tindakan_terapi::onlyTrashed()->with(['kategori', 'kategoriKlinis'])->get();
+        return view('Roles.Admin.Views.Trash_Kode_Tindakan_Terapi', compact('kode_tindakan_terapis'));
+    }
+
+    public function restore($id)
+    {
+        $item = Kode_tindakan_terapi::onlyTrashed()->findOrFail($id);
+        $item->restore();
+
+        return redirect()->route('kode_tindakan_terapi.trash')->with('success', 'Data kode tindakan terapi berhasil dipulihkan');
+    }
+
+    public function forceDelete($id)
+    {
+        $item = Kode_tindakan_terapi::onlyTrashed()->findOrFail($id);
+        $item->forceDelete();
+
+        return redirect()->route('kode_tindakan_terapi.trash')->with('success', 'Data kode tindakan terapi berhasil dihapus permanen');
+    }
 }

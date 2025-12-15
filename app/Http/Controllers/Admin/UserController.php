@@ -101,14 +101,16 @@ class UserController extends Controller
     {
         $user = User::onlyTrashed()->findOrFail($id);
         $user->restore();
+
         return redirect()->route('users.trash')->with('success', 'User berhasil dipulihkan');
     }
 
     public function forceDelete($id)
     {
         $user = User::onlyTrashed()->findOrFail($id);
-        $user->roles()->detach(); // Detach roles before permanent delete
+        $user->roles()->detach(); // Clean up roles on permanent delete
         $user->forceDelete();
+
         return redirect()->route('users.trash')->with('success', 'User berhasil dihapus permanen');
     }
 }

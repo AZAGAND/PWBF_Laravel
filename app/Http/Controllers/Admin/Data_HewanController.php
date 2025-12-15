@@ -75,4 +75,30 @@ class Data_HewanController extends Controller
 
         return redirect()->route('data_hewan')->with('success', 'Data hewan berhasil dihapus');
     }
+
+    public function trash()
+    {
+        $pets = Pet::onlyTrashed()->with([
+            'pemilik.user',
+            'rasHewan.jenisHewan'
+        ])->get();
+
+        return view('Roles.Admin.Views.Trash_Hewan', compact('pets'));
+    }
+
+    public function restore($id)
+    {
+        $pet = Pet::onlyTrashed()->findOrFail($id);
+        $pet->restore();
+
+        return redirect()->route('hewan.trash')->with('success', 'Data hewan berhasil dipulihkan');
+    }
+
+    public function forceDelete($id)
+    {
+        $pet = Pet::onlyTrashed()->findOrFail($id);
+        $pet->forceDelete();
+
+        return redirect()->route('hewan.trash')->with('success', 'Data hewan berhasil dihapus permanen');
+    }
 }

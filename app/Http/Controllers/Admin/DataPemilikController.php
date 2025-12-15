@@ -64,4 +64,25 @@ class DataPemilikController extends Controller
 
         return redirect()->route('data_pemilik')->with('success', 'Data pemilik berhasil dihapus');
     }
+    public function trash()
+    {
+        $pemiliks = Pemilik::onlyTrashed()->with('user')->get();
+        return view('Roles.Admin.Views.Trash_Pemilik', compact('pemiliks'));
+    }
+
+    public function restore($id)
+    {
+        $pemilik = Pemilik::onlyTrashed()->findOrFail($id);
+        $pemilik->restore();
+
+        return redirect()->route('pemilik.trash')->with('success', 'Data pemilik berhasil dipulihkan');
+    }
+
+    public function forceDelete($id)
+    {
+        $pemilik = Pemilik::onlyTrashed()->findOrFail($id);
+        $pemilik->forceDelete();
+
+        return redirect()->route('pemilik.trash')->with('success', 'Data pemilik berhasil dihapus permanen');
+    }
 }

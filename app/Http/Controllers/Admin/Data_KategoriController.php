@@ -55,4 +55,26 @@ class Data_KategoriController extends Controller
 
         return redirect()->route('data_kategori')->with('success', 'Data kategori berhasil dihapus');
     }
+
+    public function trash()
+    {
+        $kategoris = Kategori::onlyTrashed()->get();
+        return view('Roles.Admin.Views.Trash_Kategori', compact('kategoris'));
+    }
+
+    public function restore($id)
+    {
+        $kategori = Kategori::onlyTrashed()->findOrFail($id);
+        $kategori->restore();
+
+        return redirect()->route('kategori.trash')->with('success', 'Data kategori berhasil dipulihkan');
+    }
+
+    public function forceDelete($id)
+    {
+        $kategori = Kategori::onlyTrashed()->findOrFail($id);
+        $kategori->forceDelete();
+
+        return redirect()->route('kategori.trash')->with('success', 'Data kategori berhasil dihapus permanen');
+    }
 }

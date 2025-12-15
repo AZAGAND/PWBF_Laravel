@@ -98,4 +98,25 @@ class RoleController extends Controller
 
         return redirect()->back()->with('success', 'Status role berhasil diubah.');
     }
+    public function trash()
+    {
+        $roleUsers = Role_user::onlyTrashed()->with(['user', 'role'])->get();
+        return view('Roles.Admin.Views.Trash_Role', compact('roleUsers'));
+    }
+
+    public function restore($id)
+    {
+        $roleUser = Role_user::onlyTrashed()->findOrFail($id);
+        $roleUser->restore();
+
+        return redirect()->route('role.trash')->with('success', 'Role user berhasil dipulihkan.');
+    }
+
+    public function forceDelete($id)
+    {
+        $roleUser = Role_user::onlyTrashed()->findOrFail($id);
+        $roleUser->forceDelete();
+
+        return redirect()->route('role.trash')->with('success', 'Role user berhasil dihapus permanen.');
+    }
 }

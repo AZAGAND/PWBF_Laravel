@@ -55,4 +55,26 @@ class Kategori_KlinisController extends Controller
 
         return redirect()->route('data_kategori_klinis')->with('success', 'Data kategori klinis berhasil dihapus');
     }
+
+    public function trash()
+    {
+        $kategori_klinis = Kategori_klinis::onlyTrashed()->get();
+        return view('Roles.Admin.Views.Trash_Kategori_Klinis', compact('kategori_klinis'));
+    }
+
+    public function restore($id)
+    {
+        $kategori_klinis = Kategori_klinis::onlyTrashed()->findOrFail($id);
+        $kategori_klinis->restore();
+
+        return redirect()->route('kategori_klinis.trash')->with('success', 'Data kategori klinis berhasil dipulihkan');
+    }
+
+    public function forceDelete($id)
+    {
+        $kategori_klinis = Kategori_klinis::onlyTrashed()->findOrFail($id);
+        $kategori_klinis->forceDelete();
+
+        return redirect()->route('kategori_klinis.trash')->with('success', 'Data kategori klinis berhasil dihapus permanen');
+    }
 }
