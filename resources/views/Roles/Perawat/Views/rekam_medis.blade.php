@@ -27,7 +27,7 @@
             <div class="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-4">
                 <div class="w-full xl:col-span-1">
                     <label class="mb-2.5 block text-sm font-medium text-black dark:text-white">Reservasi Dokter</label>
-                    <select name="idreservasi_dokter" class="w-full rounded border border-gray-300 bg-transparent py-3 px-5 outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800" required>
+                    <select name="idreservasi_dokter" class="w-full rounded border border-gray-300 bg-transparent dark:text-white py-3 px-5 outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800" required>
                         <option value="">-- Pilih Reservasi --</option>
                         @foreach($reservasiList as $res)
                             <option value="{{ $res->idreservasi_dokter }}">
@@ -38,15 +38,15 @@
                 </div>
                 <div class="w-full xl:col-span-1">
                     <label class="mb-2.5 block text-sm font-medium text-black dark:text-white">Diagnosa</label>
-                    <input type="text" name="diagnosa" placeholder="Diagnosa penyakit" class="w-full rounded border border-gray-300 bg-transparent py-3 px-5 outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800" required>
+                    <input type="text" name="diagnosa" placeholder="Diagnosa penyakit" class="w-full rounded border border-gray-300 bg-transparent dark:text-white py-3 px-5 outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800" required>
                 </div>
                 <div class="w-full xl:col-span-1">
                     <label class="mb-2.5 block text-sm font-medium text-black dark:text-white">Catatan</label>
-                    <input type="text" name="catatan" placeholder="Catatan tambahan" class="w-full rounded border border-gray-300 bg-transparent py-3 px-5 outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800" required>
+                    <input type="text" name="catatan" placeholder="Catatan tambahan" class="w-full rounded border border-gray-300 bg-transparent dark:text-white py-3 px-5 outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800" required>
                 </div>
                 <div class="w-full xl:col-span-1">
                     <label class="mb-2.5 block text-sm font-medium text-black dark:text-white">Temuan Klinis</label>
-                    <input type="text" name="temuan_klinis" placeholder="Masukkan temuan klinis pasien" class="w-full rounded border border-gray-300 bg-transparent py-3 px-5 outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800" required>
+                    <input type="text" name="temuan_klinis" placeholder="Masukkan temuan klinis pasien" class="w-full rounded border border-gray-300 bg-transparent dark:text-white py-3 px-5 outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800" required>
                 </div>
             </div>
             <button type="submit" class="flex w-full justify-center rounded bg-green-500 p-3 font-medium text-white shadow-md hover:bg-green-600 transition max-w-xs">

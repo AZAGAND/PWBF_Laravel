@@ -48,7 +48,7 @@
                         <td class="py-5 px-4">
                             <p class="text-black dark:text-white">{{ $res->dokter->user->nama ?? 'Dokter' }}</p>
                         </td>
-                        <td class="py-5 px-4">
+                        <td class="py-5 px-4 dark:text-white">
                             @if($res->status == 'S' || $res->status == 'Selesai')
                                 <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold border border-green-200">Selesai</span>
                             @elseif($res->status == 'P' || $res->status == 'Pending')
@@ -60,7 +60,7 @@
                         <td class="py-5 px-4">
                             <p class="text-black dark:text-white">{{ $res->tanggal }}</p>
                         </td>
-                        <td class="py-5 px-4">
+                        <td class="py-5 px-4 dark:text-white">
                             <form action="{{ route('perawat.reservasi.update', $res->idreservasi_dokter) }}" method="POST" class="flex items-center gap-2">
                                 @csrf
                                 @method('PUT')

@@ -32,35 +32,35 @@
                 <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                     Nama Lengkap <span class="text-red-500">*</span>
                 </label>
-                <input type="text" name="nama" placeholder="Masukkan nama lengkap" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 disabled:cursor-default disabled:bg-whiter dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
+                <input type="text" name="nama" placeholder="Masukkan nama lengkap" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 disabled:cursor-default disabled:bg-whiter dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
             </div>
 
             <div class="mb-5">
                 <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                     Email <span class="text-red-500">*</span>
                 </label>
-                <input type="email" name="email" placeholder="contoh@email.com" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
+                <input type="email" name="email" placeholder="contoh@email.com" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
             </div>
 
             <div class="mb-5">
                 <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                     Password <span class="text-red-500">*</span>
                 </label>
-                <input type="password" name="password" placeholder="Masukkan password" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
+                <input type="password" name="password" placeholder="Masukkan password" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
             </div>
 
             <div class="mb-5">
                 <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                     Nomor WhatsApp <span class="text-red-500">*</span>
                 </label>
-                <input type="text" name="no_wa" placeholder="08xxxxxxxxxx" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
+                <input type="text" name="no_wa" placeholder="08xxxxxxxxxx" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
             </div>
 
             <div class="mb-5">
                 <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                     Alamat <span class="text-red-500">*</span>
                 </label>
-                <textarea name="alamat" rows="4" placeholder="Masukkan alamat lengkap" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required></textarea>
+                <textarea name="alamat" rows="4" placeholder="Masukkan alamat lengkap" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required></textarea>
             </div>
 
             <div class="mt-6 mb-6 rounded-md bg-blue-50 p-4 text-xs dark:text-white">

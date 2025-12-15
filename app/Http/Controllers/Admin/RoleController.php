@@ -66,7 +66,6 @@ class RoleController extends Controller
 
         $roleUser = Role_user::findOrFail($id);
         
-        // Check uniqueness if changing role
         if ($roleUser->idrole != $request->idrole) {
             $exists = Role_user::where('iduser', $roleUser->iduser)
                 ->where('idrole', $request->idrole)

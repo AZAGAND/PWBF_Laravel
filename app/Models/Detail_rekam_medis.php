@@ -19,13 +19,11 @@ class Detail_rekam_medis extends Model
         'detail',
     ];
 
-    // parent rekam_medis
     public function rekamMedis()
     {
         return $this->belongsTo(Rekam_medis::class, 'idrekam_medis', 'idrekam_medis');
     }
 
-    // tindakan/terapi apa yang diberikan
     public function tindakanTerapi()
     {
         return $this->belongsTo(Kode_tindakan_terapi::class, 'idkode_tindakan_terapi', 'idkode_tindakan_terapi');

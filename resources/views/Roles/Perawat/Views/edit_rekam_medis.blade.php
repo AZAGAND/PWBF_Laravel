@@ -18,21 +18,21 @@
                 <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                     Diagnosa
                 </label>
-                <input type="text" name="diagnosa" value="{{ $rekamMedis->diagnosa }}" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
+                <input type="text" name="diagnosa" value="{{ $rekamMedis->diagnosa }}" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
             </div>
 
             <div class="mb-5">
                 <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                     Anamnesa
                 </label>
-                <textarea name="anamnesa" rows="4" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>{{ $rekamMedis->anamnesa }}</textarea>
+                <textarea name="anamnesa" rows="4" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>{{ $rekamMedis->anamnesa }}</textarea>
             </div>
 
             <div class="mb-6">
                 <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                     Temuan Klinis
                 </label>
-                <textarea name="temuan_klinis" rows="4" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>{{ $rekamMedis->temuan_klinis }}</textarea>
+                <textarea name="temuan_klinis" rows="4" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>{{ $rekamMedis->temuan_klinis }}</textarea>
             </div>
 
             <div class="flex items-center justify-between">
