@@ -56,6 +56,55 @@
                                     </a>
                                 </li>
                                 <!-- Menu Item Dashboard -->
+
+                                <!-- Menu Item Registrasi Pemilik -->
+                                <li>
+                                    <a href="{{ route('resepsionis.pemilik.create') }}"
+                                        @click.prevent="selected = (selected === 'Registrasi Pemilik' ? '':'Registrasi Pemilik'); window.location.href='{{ route('resepsionis.pemilik.create') }}'"
+                                        class="menu-item group"
+                                        :class="(selected === 'Registrasi Pemilik') ? 'menu-item-active' : 'menu-item-inactive'">
+                                        <svg :class="(selected === 'Registrasi Pemilik') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'"
+                                            width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/>
+                                        </svg>
+                                        <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
+                                            Registrasi Pemilik
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <!-- Menu Item Registrasi Hewan -->
+                                <li>
+                                    <a href="{{ route('resepsionis.hewan.create') }}"
+                                        @click.prevent="selected = (selected === 'Registrasi Hewan' ? '':'Registrasi Hewan'); window.location.href='{{ route('resepsionis.hewan.create') }}'"
+                                        class="menu-item group"
+                                        :class="(selected === 'Registrasi Hewan') ? 'menu-item-active' : 'menu-item-inactive'">
+                                        <svg :class="(selected === 'Registrasi Hewan') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'"
+                                            width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/>
+                                            <path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7z" fill="currentColor"/>
+                                        </svg>
+                                        <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
+                                            Registrasi Hewan
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <!-- Menu Item Temu Dokter -->
+                                <li>
+                                    <a href="{{ route('resepsionis.temu_dokter') }}"
+                                        @click.prevent="selected = (selected === 'Temu Dokter' ? '':'Temu Dokter'); window.location.href='{{ route('resepsionis.temu_dokter') }}'"
+                                        class="menu-item group"
+                                        :class="(selected === 'Temu Dokter') ? 'menu-item-active' : 'menu-item-inactive'">
+                                        <svg :class="(selected === 'Temu Dokter') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'"
+                                            width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 002 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" fill="currentColor"/>
+                                        </svg>
+                                        <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
+                                            Temu Dokter
+                                        </span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </nav>

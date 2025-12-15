@@ -38,7 +38,7 @@
                     <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                         Nama Pemilik
                     </label>
-                    <select id="pemilik_select" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500">
+                    <select id="pemilik_select" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500">
                          <option value="">-- Pilih Pemilik --</option>
                          @foreach($pemiliks as $pemilik)
                             <option value="{{ $pemilik->idpemilik }}">{{ $pemilik->user->nama ?? '-' }}</option>
@@ -51,7 +51,7 @@
                      <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                         Nama Pet <span class="text-red-500">*</span>
                     </label>
-                    <select name="idpet" id="pet_select" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
+                    <select name="idpet" id="pet_select" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
                          <option value="">-- Pilih Pet --</option>
                           @foreach($pemiliks as $pemilik)
                                 @if($pemilik->pets && $pemilik->pets->count() > 0)
@@ -71,16 +71,16 @@
                      <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                         Dokter <span class="text-red-500">*</span>
                     </label>
-                    <select name="idrole_user" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
-                         <option value="">-- Pilih Dokter --</option>
+                    <select name="idrole_user" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
+                         <option class="mb-3 block text-sm font-medium text-black dark:text-white" value="">-- Pilih Dokter --</option>
                          @foreach($dokters as $dokter)
-                            <option value="{{ $dokter->idrole_user }}">{{ $dokter->user->nama ?? '-' }}</option>
+                            <option class="mb-3 block text-sm font-medium text-black dark:text-white" value="{{ $dokter->idrole_user }}">{{ $dokter->user->nama ?? '-' }}</option>
                          @endforeach
                     </select>
                 </div>
             </div>
 
-            <button type="submit" class="w-full flex items-center justify-center rounded bg-green-500 py-3 px-6 font-medium text-white hover:bg-green-600 transition gap-2">
+            <button type="submit" class="w-full flex items-center justify-center rounded bg-green-500 py-3 px-6 font-medium dark:text-white hover:bg-green-600 transition gap-2">
                  ✓ Tambah Jadwal Temu
             </button>
         </form>
@@ -114,7 +114,7 @@
                             <h5 class="font-medium text-black dark:text-white">{{ $index + 1 }}</h5>
                         </td>
                          <td class="py-4 px-4">
-                            <span class="bg-slate-700 text-white rounded-full px-3 py-1 text-xs font-bold inline-block shadow-sm">
+                            <span class="bg-slate-700 dark:text-white rounded-full px-3 py-1 text-xs font-bold inline-block shadow-sm">
                                 {{ substr(str_pad($item->no_urut, 7, '0', STR_PAD_LEFT), 0, 6) . '-' . substr(str_pad($item->no_urut, 7, '0', STR_PAD_LEFT), 6) }}
                             </span>
                         </td>
@@ -122,10 +122,10 @@
                             <p class="text-black dark:text-white text-sm">{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y, H:i') }}</p>
                         </td>
                         <td class="py-4 px-4">
-                             <p class="text-blue-600 font-semibold">{{ $item->pet->nama ?? '-' }}</p>
+                             <p class="text-blue-600 font-semibold dark:text-white">{{ $item->pet->nama ?? '-' }}</p>
                         </td>
                         <td class="py-4 px-4">
-                             <span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-xs border border-blue-200">
+                             <span class="bg-blue-50 dark:bg-blue-700 dark:text-white px-2 py-0.5 rounded text-xs border border-blue-200">
                                 {{ $item->pet->rasHewan->jenisHewan->jenis_hewan ?? 'Hewan' }} ({{ $item->pet->rasHewan->nama_ras_hewan ?? '-' }})
                              </span>
                         </td>

@@ -56,6 +56,58 @@
                                     </a>
                                 </li>
                                 <!-- Menu Item Dashboard -->
+
+                                <!-- Menu Item Daftar Hewan -->
+                                <li>
+                                    <a href="{{ route('pemilik.hewan') }}"
+                                        @click.prevent="selected = (selected === 'Daftar Hewan' ? '':'Daftar Hewan'); window.location.href='{{ route('pemilik.hewan') }}'"
+                                        class="menu-item group"
+                                        :class="(selected === 'Daftar Hewan') ? 'menu-item-active' : 'menu-item-inactive'">
+                                        <svg :class="(selected === 'Daftar Hewan') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'"
+                                            width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <!-- Paw print icon (approximated/placeholder) -->
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/>
+                                            <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                                        </svg>
+                                        <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
+                                            Daftar Hewan
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <!-- Menu Item Daftar Reservasi -->
+                                <li>
+                                    <a href="{{ route('pemilik.reservasi') }}"
+                                        @click.prevent="selected = (selected === 'Daftar Reservasi' ? '':'Daftar Reservasi'); window.location.href='{{ route('pemilik.reservasi') }}'"
+                                        class="menu-item group"
+                                        :class="(selected === 'Daftar Reservasi') ? 'menu-item-active' : 'menu-item-inactive'">
+                                        <svg :class="(selected === 'Daftar Reservasi') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'"
+                                            width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <!-- Calendar icon -->
+                                            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5v-5z" fill="currentColor"/>
+                                        </svg>
+                                        <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
+                                            Daftar Reservasi
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <!-- Menu Item Rekam Medis -->
+                                <li>
+                                    <a href="{{ route('pemilik.rekam_medis') }}"
+                                        @click.prevent="selected = (selected === 'Rekam Medis' ? '':'Rekam Medis'); window.location.href='{{ route('pemilik.rekam_medis') }}'"
+                                        class="menu-item group"
+                                        :class="(selected === 'Rekam Medis') ? 'menu-item-active' : 'menu-item-inactive'">
+                                        <svg :class="(selected === 'Rekam Medis') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'"
+                                            width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <!-- Clipboard/Medical icon -->
+                                            <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" fill="currentColor"/>
+                                        </svg>
+                                        <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
+                                            Rekam Medis
+                                        </span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </nav>

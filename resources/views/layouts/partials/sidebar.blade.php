@@ -38,15 +38,11 @@
                             <ul class="flex flex-col gap-4 mb-6">
                                 <!-- Menu Item Dashboard -->
                                 <li>
-                                    <a href="#"
-                                        @click.prevent="selected = (selected === 'Dashboard' ? '':'Dashboard')"
+                                    <a href="{{ route('dashboard_Admin') }}"
+                                        @click.prevent="selected = (selected === 'Dashboard' ? '':'Dashboard'); window.location.href='{{ route('dashboard_Admin') }}'"
                                         class="menu-item group"
-                                        :class="(selected === 'Dashboard') || (page === 'ecommerce' || page === 'analytics' ||
-                                            page === 'marketing' || page === 'crm' || page === 'stocks') ?
-                                        'menu-item-active' : 'menu-item-inactive'">
-                                        <svg :class="(selected === 'Dashboard') || (page === 'ecommerce' || page === 'analytics' ||
-                                            page === 'marketing' || page === 'crm' || page === 'stocks') ?
-                                        'menu-item-icon-active' : 'menu-item-icon-inactive'"
+                                        :class="(selected === 'Dashboard') ? 'menu-item-active' : 'menu-item-inactive'">
+                                        <svg :class="(selected === 'Dashboard') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'"
                                             width="24" height="24" viewBox="0 0 24 24" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -57,162 +53,46 @@
                                         <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                                             Dashboard
                                         </span>
-
-                                        <svg class="menu-item-arrow"
-                                            :class="[(selected === 'Dashboard') ? 'menu-item-arrow-active' :
-                                                'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : ''
-                                            ]"
-                                            width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M4.79175 7.39584L10.0001 12.6042L15.2084 7.39585" stroke=""
-                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
                                     </a>
-
-                                    <!-- Dropdown Menu Start -->
-                                    <div class="overflow-hidden transform translate"
-                                        :class="(selected === 'Dashboard') ? 'block' : 'hidden'">
-                                        <ul :class="sidebarToggle ? 'lg:hidden' : 'flex'"
-                                            class="flex flex-col gap-1 mt-2 menu-dropdown pl-9">
-                                            <li>
-                                                <a href="{{ route('data_master') }}" class="menu-dropdown-item group"
-                                                    :class="page === 'ecommerce' ? 'menu-dropdown-item-active' :
-                                                        'menu-dropdown-item-inactive'">
-                                                    Data Master
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- Dropdown Menu End -->
                                 </li>
                                 <!-- Menu Item Dashboard -->
 
-
-
-                                <!-- Menu Item Tables -->
+                                <!-- Menu Item Data Master (Dropdown) -->
                                 <li>
-                                    <a href="#" @click.prevent="selected = (selected === 'Tables' ? '':'Tables')"
-                                        class="menu-item group"
-                                        :class="(selected === 'Tables') || (page === 'basicTables' ||
-                                            page === 'dataTables') ? 'menu-item-active' : 'menu-item-inactive'">
-                                        <svg :class="(selected === 'Tables') || (page === 'basicTables' ||
-                                            page === 'dataTables') ? 'menu-item-icon-active' :
-                                        'menu-item-icon-inactive'"
-                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M3.25 5.5C3.25 4.25736 4.25736 3.25 5.5 3.25H18.5C19.7426 3.25 20.75 4.25736 20.75 5.5V18.5C20.75 19.7426 19.7426 20.75 18.5 20.75H5.5C4.25736 20.75 3.25 19.7426 3.25 18.5V5.5ZM5.5 4.75C5.08579 4.75 4.75 5.08579 4.75 5.5V8.58325L19.25 8.58325V5.5C19.25 5.08579 18.9142 4.75 18.5 4.75H5.5ZM19.25 10.0833H15.416V13.9165H19.25V10.0833ZM13.916 10.0833L10.083 10.0833V13.9165L13.916 13.9165V10.0833ZM8.58301 10.0833H4.75V13.9165H8.58301V10.0833ZM4.75 18.5V15.4165H8.58301V19.25H5.5C5.08579 19.25 4.75 18.9142 4.75 18.5ZM10.083 19.25V15.4165L13.916 15.4165V19.25H10.083ZM15.416 19.25V15.4165H19.25V18.5C19.25 18.9142 18.9142 19.25 18.5 19.25H15.416Z"
-                                                fill="" />
+                                    <a href="#" class="menu-item group"
+                                        @click.prevent="selected = (selected === 'Data Master' ? '':'Data Master')"
+                                        :class="(selected === 'Data Master') ? 'menu-item-active' : 'menu-item-inactive'">
+                                        <svg :class="(selected === 'Data Master') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'"
+                                            width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 11a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1v-2zM4 17a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1v-2z" fill="currentColor"/>
                                         </svg>
-
                                         <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
-                                            Tables
+                                            Data Master
                                         </span>
-
-                                        <svg class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
-                                            :class="[(selected === 'Tables') ? 'menu-item-arrow-active' :
-                                                'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : ''
-                                            ]"
+                                        <svg class="menu-item-arrow" :class="[(selected === 'Data Master') ? 'rotate-90' : '', sidebarToggle ? 'lg:hidden' : '']"
                                             width="20" height="20" viewBox="0 0 20 20" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M4.79175 7.39584L10.0001 12.6042L15.2084 7.39585" stroke=""
-                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M6 8L10 12L14 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </a>
 
-                                    <!-- Dropdown Menu Start -->
-                                    <div class="overflow-hidden transform translate"
-                                        :class="(selected === 'Tables') ? 'block' : 'hidden'">
-                                        <ul :class="sidebarToggle ? 'lg:hidden' : 'flex'"
-                                            class="flex flex-col gap-1 mt-2 menu-dropdown pl-9">
-                                            <li>
-                                                <a href="basic-tables.html" class="menu-dropdown-item group"
-                                                    :class="page === 'basicTables' ? 'menu-dropdown-item-active' :
-                                                        'menu-dropdown-item-inactive'">
-                                                    Basic Tables
-                                                </a>
-                                            </li>
+                                    <!-- Dropdown Content -->
+                                    <div class="overflow-hidden transform translate transition-all duration-300 dark:text-white"
+                                         :class="(selected === 'Data Master') ? 'block' : 'hidden'">
+                                        <ul :class="sidebarToggle ? 'lg:hidden' : 'flex'" class="flex flex-col gap-1 mt-2 menu-dropdown pl-9">
+                                            <li><a href="{{ route('data_user') }}" class="menu-dropdown-item">Data User</a></li>
+                                            <li><a href="{{ route('data_role') }}" class="menu-dropdown-item">Data Role</a></li>
+                                            <li><a href="{{ route('ras_hewan') }}" class="menu-dropdown-item">Ras Hewan</a></li>
+                                            <li><a href="{{ route('jenis_hewan') }}" class="menu-dropdown-item">Jenis Hewan</a></li>
+                                            <li><a href="{{ route('data_pemilik') }}" class="menu-dropdown-item">Data Pemilik</a></li>
+                                            <li><a href="{{ route('data_dokter') }}" class="menu-dropdown-item">Data Dokter</a></li>
+                                            <li><a href="{{ route('data_hewan') }}" class="menu-dropdown-item">Data Hewan</a></li>
+                                            <li><a href="{{ route('data_kategori') }}" class="menu-dropdown-item">Data Kategori</a></li>
+                                            <li><a href="{{ route('data_kategori_klinis') }}" class="menu-dropdown-item">Kategori Klinis</a></li>
+                                            <li><a href="{{ route('data_kode_tindakan_terapi') }}" class="menu-dropdown-item">Kode Tindakan</a></li>
                                         </ul>
                                     </div>
-                                    <!-- Dropdown Menu End -->
                                 </li>
-                                <!-- Menu Item Tables -->
-
-                                
-
-                        <!-- Others Group -->
-                        <div>
-                            <h3 class="mb-4 text-xs uppercase leading-[20px] text-gray-400">
-                                <span class="menu-group-title" :class="sidebarToggle ? 'lg:hidden' : ''">
-                                    others
-                                </span>
-
-                                <svg :class="sidebarToggle ? 'lg:block hidden' : 'hidden'"
-                                    class="mx-auto fill-current menu-group-icon" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M5.99915 10.2451C6.96564 10.2451 7.74915 11.0286 7.74915 11.9951V12.0051C7.74915 12.9716 6.96564 13.7551 5.99915 13.7551C5.03265 13.7551 4.24915 12.9716 4.24915 12.0051V11.9951C4.24915 11.0286 5.03265 10.2451 5.99915 10.2451ZM17.9991 10.2451C18.9656 10.2451 19.7491 11.0286 19.7491 11.9951V12.0051C19.7491 12.9716 18.9656 13.7551 17.9991 13.7551C17.0326 13.7551 16.2491 12.9716 16.2491 12.0051V11.9951C16.2491 11.0286 17.0326 10.2451 17.9991 10.2451ZM13.7491 11.9951C13.7491 11.0286 12.9656 10.2451 11.9991 10.2451C11.0326 10.2451 10.2491 11.0286 10.2491 11.9951V12.0051C10.2491 12.9716 11.0326 13.7551 11.9991 13.7551C12.9656 13.7551 13.7491 12.9716 13.7491 12.0051V11.9951Z"
-                                        fill="" />
-                                </svg>
-                            </h3>
-
-                            <ul class="flex flex-col gap-4 mb-6">
-                                <!-- Menu Item Authentication -->
-                                <li>
-                                    <a href="#"
-                                        @click.prevent="selected = (selected === 'Authentication' ? '':'Authentication')"
-                                        class="menu-item group"
-                                        :class="(selected === 'Authentication') || (page === 'basicChart' ||
-                                            page === 'advancedChart') ? 'menu-item-active' : 'menu-item-inactive'">
-                                        <svg :class="(selected === 'Authentication') || (page === 'basicChart' ||
-                                            page === 'advancedChart') ? 'menu-item-icon-active' :
-                                        'menu-item-icon-inactive'"
-                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M14 2.75C14 2.33579 14.3358 2 14.75 2C15.1642 2 15.5 2.33579 15.5 2.75V5.73291L17.75 5.73291H19C19.4142 5.73291 19.75 6.0687 19.75 6.48291C19.75 6.89712 19.4142 7.23291 19 7.23291H18.5L18.5 12.2329C18.5 15.5691 15.9866 18.3183 12.75 18.6901V21.25C12.75 21.6642 12.4142 22 12 22C11.5858 22 11.25 21.6642 11.25 21.25V18.6901C8.01342 18.3183 5.5 15.5691 5.5 12.2329L5.5 7.23291H5C4.58579 7.23291 4.25 6.89712 4.25 6.48291C4.25 6.0687 4.58579 5.73291 5 5.73291L6.25 5.73291L8.5 5.73291L8.5 2.75C8.5 2.33579 8.83579 2 9.25 2C9.66421 2 10 2.33579 10 2.75L10 5.73291L14 5.73291V2.75ZM7 7.23291L7 12.2329C7 14.9943 9.23858 17.2329 12 17.2329C14.7614 17.2329 17 14.9943 17 12.2329L17 7.23291L7 7.23291Z"
-                                                fill="" />
-                                        </svg>
-
-                                        <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
-                                            Authentication
-                                        </span>
-
-                                        <svg class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
-                                            :class="[(selected === 'Authentication') ? 'menu-item-arrow-active' :
-                                                'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : ''
-                                            ]"
-                                            width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M4.79175 7.39584L10.0001 12.6042L15.2084 7.39585" stroke=""
-                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </a>
-
-                                    <!-- Dropdown Menu Start -->
-                                    <div class="overflow-hidden transform translate"
-                                        :class="(selected === 'Authentication') ? 'block' : 'hidden'">
-                                        <ul :class="sidebarToggle ? 'lg:hidden' : 'flex'"
-                                            class="flex flex-col gap-1 mt-2 menu-dropdown pl-9">
-                                            <li>
-                                                <a href="signin.html" class="menu-dropdown-item group"
-                                                    :class="page === 'signin' ? 'menu-dropdown-item-active' :
-                                                        'menu-dropdown-item-inactive'">
-                                                    Sign In
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="signup.html" class="menu-dropdown-item group"
-                                                    :class="page === 'signup' ? 'menu-dropdown-item-active' :
-                                                        'menu-dropdown-item-inactive'">
-                                                    Sign Up
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- Dropdown Menu End -->
-                                </li>
-                                <!-- Menu Item Authentication -->
                             </ul>
                         </div>
                     </nav>

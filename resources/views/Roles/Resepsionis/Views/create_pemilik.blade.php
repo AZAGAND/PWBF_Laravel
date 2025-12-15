@@ -63,15 +63,15 @@
                 <textarea name="alamat" rows="4" placeholder="Masukkan alamat lengkap" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required></textarea>
             </div>
 
-            <div class="mt-6 mb-6 rounded-md bg-blue-50 p-4 text-xs text-blue-800">
+            <div class="mt-6 mb-6 rounded-md bg-blue-50 p-4 text-xs dark:text-white">
                 Info: Pastikan semua data diisi dengan benar. Data ini akan digunakan untuk keperluan komunikasi dan administrasi.
             </div>
 
             <div class="flex items-center gap-4">
-                <button type="submit" class="flex items-center justify-center rounded bg-green-500 py-3 px-6 font-medium text-white hover:bg-green-600 transition gap-2 w-1/2">
+                <button type="submit" class="flex items-center justify-center rounded bg-green-500 py-3 px-6 font-medium dark:text-white hover:bg-green-600 transition gap-2 w-1/2">
                      ✓ Daftar Sekarang
                 </button>
-                <a href="{{ route('Dashboard_Resepsionis') }}" class="flex items-center justify-center rounded bg-slate-600 py-3 px-6 font-medium text-white hover:bg-slate-700 transition w-1/2">
+                <a href="{{ route('Dashboard_Resepsionis') }}" class="flex items-center justify-center rounded bg-slate-600 py-3 px-6 font-medium dark:text-white hover:bg-slate-700 transition w-1/2">
                     ⬅ Kembali
                 </a>
             </div>

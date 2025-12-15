@@ -36,7 +36,7 @@
                     <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                         Pilih Pemilik <span class="text-red-500">*</span>
                     </label>
-                    <select name="idpemilik" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
+                    <select name="idpemilik" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
                         <option value="">-- Pilih Pemilik --</option>
                         @foreach($pemiliks as $pemilik)
                             <option value="{{ $pemilik->idpemilik }}">{{ $pemilik->user->nama ?? '-' }} ({{ $pemilik->alamat }})</option>
@@ -56,19 +56,18 @@
                     <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                         Nama Pet <span class="text-red-500">*</span>
                     </label>
-                    <input type="text" name="nama" placeholder="Contoh: Max, Luna, Bella" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
+                    <input type="text" name="nama" placeholder="Contoh: Max, Luna, Bella" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-5">
-                    {{-- Jenis Hewan / Ras Helper --}}
-                    {{-- Simplified approach: Users select Ras, we can assume Jenis from Ras relation visually --}}
-                    {{-- Or use Javascript filter. For now, matching the Admin Create Pet style roughly --}}
-                    
+                    <!-- Helper -->
+
+                    <!-- end helper -->
                     <div>
                          <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                             Jenis Hewan
                         </label>
-                        <select id="jenis_helper" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500">
+                        <select id="jenis_helper" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500">
                              <option value="">-- Pilih Jenis Hewan (opsional) --</option>
                              {{-- Could populate distinct values from $races if needed, but keeping simple --}}
                              <option value="Kucing">Kucing</option>
@@ -81,7 +80,7 @@
                         <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                             Ras Hewan <span class="text-red-500">*</span>
                         </label>
-                        <select name="idras_hewan" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
+                        <select name="idras_hewan" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
                             <option value="">-- Pilih Ras Hewan --</option>
                             @foreach($races as $ras)
                                 <option value="{{ $ras->idras_hewan }}">{{ $ras->nama_ras_hewan }} ({{ $ras->jenisHewan->jenis_hewan ?? '-' }})</option>
@@ -95,13 +94,13 @@
                         <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                             Tanggal Lahir
                         </label>
-                        <input type="date" name="tanggal_lahir" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
+                        <input type="date" name="tanggal_lahir" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500" required>
                     </div>
                     <div>
                         <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                             Jenis Kelamin
                         </label>
-                         <select name="jenis_kelamin" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500">
+                         <select name="jenis_kelamin" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500">
                             <option value="">-- Pilih --</option>
                             <option value="Jantan">Jantan</option>
                             <option value="Betina">Betina</option>
@@ -113,19 +112,19 @@
                     <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                         Warna / Tanda Khusus
                     </label>
-                    <input type="text" name="warna_tanda" placeholder="Contoh: Putih dengan bercak coklat, hitam belang" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500">
+                    <input type="text" name="warna_tanda" placeholder="Contoh: Putih dengan bercak coklat, hitam belang" class="w-full rounded border-[1.5px] border-gray-300 bg-transparent dark:text-white py-3 px-5 font-medium outline-none transition focus:border-blue-500 active:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:border-blue-500">
                 </div>
             </div>
 
-            <div class="mt-6 mb-6 rounded-md bg-green-50 p-4 text-xs text-green-800">
+            <div class="mt-6 mb-6 rounded-md bg-green-50 p-4 text-xs dark:text-white">
                 Info: Pastikan pemilik sudah terdaftar sebelum mendaftarkan pet. Data ras hewan wajib diisi karena berkaitan dengan jenis hewan.
             </div>
 
             <div class="flex items-center gap-4">
-                <button type="submit" class="flex items-center justify-center rounded bg-green-500 py-3 px-6 font-medium text-white hover:bg-green-600 transition gap-2 w-1/2">
+                <button type="submit" class="flex items-center justify-center rounded bg-green-500 py-3 px-6 font-medium dark:text-white hover:bg-green-600 transition gap-2 w-1/2">
                      ✓ Daftar Pet
                 </button>
-                <a href="{{ route('Dashboard_Resepsionis') }}" class="flex items-center justify-center rounded bg-slate-600 py-3 px-6 font-medium text-white hover:bg-slate-700 transition w-1/2">
+                <a href="{{ route('Dashboard_Resepsionis') }}" class="flex items-center justify-center rounded bg-slate-600 py-3 px-6 font-medium dark:text-white hover:bg-slate-700 transition w-1/2">
                     ⬅ Kembali
                 </a>
             </div>

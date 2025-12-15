@@ -56,6 +56,38 @@
                                     </a>
                                 </li>
                                 <!-- Menu Item Dashboard -->
+                                
+                                <!-- Menu Item Rekam Medis -->
+                                <li>
+                                    <a href="{{ route('perawat.rekam_medis') }}"
+                                        @click.prevent="selected = (selected === 'Rekam Medis' ? '':'Rekam Medis'); window.location.href='{{ route('perawat.rekam_medis') }}'"
+                                        class="menu-item group"
+                                        :class="(selected === 'Rekam Medis') ? 'menu-item-active' : 'menu-item-inactive'">
+                                        <svg :class="(selected === 'Rekam Medis') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'"
+                                            width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" fill="currentColor"/>
+                                        </svg>
+                                        <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
+                                            Rekam Medis
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <!-- Menu Item Reservasi -->
+                                <li>
+                                    <a href="{{ route('perawat.reservasi') }}"
+                                        @click.prevent="selected = (selected === 'Reservasi' ? '':'Reservasi'); window.location.href='{{ route('perawat.reservasi') }}'"
+                                        class="menu-item group"
+                                        :class="(selected === 'Reservasi') ? 'menu-item-active' : 'menu-item-inactive'">
+                                        <svg :class="(selected === 'Reservasi') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'"
+                                            width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5v-5z" fill="currentColor"/>
+                                        </svg>
+                                        <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
+                                            Reservasi
+                                        </span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </nav>
