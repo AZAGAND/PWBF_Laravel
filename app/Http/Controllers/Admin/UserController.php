@@ -59,9 +59,6 @@ class UserController extends Controller
             'nama' => $request->nama,
             'email' => $request->email,
         ]);
-
-        // Sync roles (assuming one role for now based on UI, but pivot table supports many)
-        // Using sync will replace existing roles with the new one
         $user->roles()->syncWithPivotValues([$request->role], ['status' => 1]);
 
         return redirect()->route('data_user')->with('success', 'User berhasil diperbarui');
@@ -70,7 +67,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        $user->roles()->detach(); // Remove role relations
+        $user->roles()->detach();
         $user->delete();
         return redirect()->route('data_user')->with('success', 'User berhasil dihapus');
     }

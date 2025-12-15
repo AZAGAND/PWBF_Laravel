@@ -16,16 +16,12 @@ class DataPemilikController extends Controller
 
     public function create()
     {
-        // Get users who don't have a profile yet (checking the 'pemilik' relationship)
         $users = \App\Models\User::whereDoesntHave('pemilik')->get(); 
         return view('Roles.Admin.Views.Feature.Create_Pemilik', compact('users'));
     }
 
     public function store(Request $request)
     {
-        // Debugging
-        // dd($request->all());
-
         $request->validate([
             'iduser' => 'required|exists:User,iduser|unique:pemilik,iduser',
             'no_wa' => 'required|string|max:20',
@@ -43,7 +39,7 @@ class DataPemilikController extends Controller
     public function edit($id)
     {
         $pemilik = Pemilik::findOrFail($id);
-        $users = \App\Models\User::all(); // Or just the current one + others
+        $users = \App\Models\User::all();
         return view('Roles.Admin.Views.Feature.Edit_Pemilik', compact('pemilik', 'users'));
     }
 

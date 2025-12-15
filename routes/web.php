@@ -26,6 +26,11 @@ use App\Http\Controllers\Perawat\ReservasiController;
 use App\Http\Controllers\Pemilik\PemilikController;
 
 
+use App\Http\Controllers\Pemilik\ListHewanController;
+use App\Http\Controllers\Pemilik\ListReservasiController;
+use App\Http\Controllers\Pemilik\ListRekamMedisController;
+
+
 Route::get('/', function () {
     return view('site.home');
 });
@@ -176,6 +181,9 @@ route::middleware('isDokter')->group(function() {
 
     Route::controller(App\Http\Controllers\Dokter\RekamMedisDokterController::class)->group(function () {
         route::get('dokter/rekam-medis', 'index')->name('dokter.rekam_medis');
+    });
+
+    Route::controller(App\Http\Controllers\Dokter\DetailRekamMedis::class)->group(function () {
         route::get('dokter/rekam-medis/{id}', 'show')->name('dokter.rekam_medis.show');
         
         // CRUD Detail Rekam Medis
@@ -218,10 +226,18 @@ route::middleware('isPemilik')->group(function() {
     Route::controller(PemilikController::class)->group(function () {
         route::get('Dashboard_Pemilik', 'Dashboard_Pemilik')->name('Dashboard_Pemilik');
         route::get('pemilik/profile', 'profile')->name('pemilik.profile');
-        
-        // Fitur Pemilik
-        route::get('pemilik/hewan', 'daftarHewan')->name('pemilik.hewan');
-        route::get('pemilik/reservasi', 'daftarReservasi')->name('pemilik.reservasi');
-        route::get('pemilik/rekam-medis', 'rekamMedis')->name('pemilik.rekam_medis');
+    });
+    
+    // Fitur Pemilik
+    Route::controller(ListHewanController::class)->group(function () {
+        route::get('pemilik/hewan', 'index')->name('pemilik.hewan');
+    });
+    
+    Route::controller(ListReservasiController::class)->group(function () {
+        route::get('pemilik/reservasi', 'index')->name('pemilik.reservasi');
+    });
+    
+    Route::controller(ListRekamMedisController::class)->group(function () {
+        route::get('pemilik/rekam-medis', 'index')->name('pemilik.rekam_medis');
     });
 });

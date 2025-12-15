@@ -10,7 +10,6 @@ class Data_DokterController extends Controller
 {
     public function DataDokter()
     {
-        // Get all users who have role 2 (Dokter)
         $dokters = Role_user::with('user')
             ->where('idrole', 2)
             ->get();
@@ -20,8 +19,6 @@ class Data_DokterController extends Controller
 
     public function create()
     {
-        // Get users who are NOT yet assigned as Dokter (role 2)
-        // We check existing role_user records where idrole = 2
         $existingDokterIds = Role_user::where('idrole', 2)->pluck('iduser');
         
         $users = \App\Models\User::whereNotIn('iduser', $existingDokterIds)->get();
@@ -32,11 +29,9 @@ class Data_DokterController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'iduser' => 'required|exists:User,iduser', // Check User table
+            'iduser' => 'required|exists:User,iduser',
         ]);
 
-        // Validate uniqueness manually or via rule to ensure this user isn't already a doctor
-        // (though the create form filtering helps, direct post needs protection)
         $exists = Role_user::where('iduser', $request->iduser)->where('idrole', 2)->exists();
         if ($exists) {
             return back()->with('error', 'User ini sudah terdaftar sebagai dokter.')->withInput();
@@ -44,7 +39,7 @@ class Data_DokterController extends Controller
 
         Role_user::create([
             'iduser' => $request->iduser,
-            'idrole' => 2, // 2 is Dokter
+            'idrole' => 2,
             'status' => 1,
         ]);
 
@@ -53,11 +48,8 @@ class Data_DokterController extends Controller
 
     public function edit($id)
     {
-        // $id here is idrole_user
         $dokter = Role_user::with('user')->findOrFail($id);
         
-        // For editing, we might want to allow changing the user? 
-        // Or maybe just show who it is. Let's allow changing the user but filter out existing doctors (except self).
         $existingDokterIds = Role_user::where('idrole', 2)->where('iduser', '!=', $dokter->iduser)->pluck('iduser');
         $users = \App\Models\User::whereNotIn('iduser', $existingDokterIds)->get();
 
@@ -73,7 +65,6 @@ class Data_DokterController extends Controller
 
         $dokter = Role_user::findOrFail($id);
 
-        // Check if new user is already a doctor (unless it's the same user)
         if ($request->iduser != $dokter->iduser) {
             $exists = Role_user::where('iduser', $request->iduser)->where('idrole', 2)->exists();
             if ($exists) {

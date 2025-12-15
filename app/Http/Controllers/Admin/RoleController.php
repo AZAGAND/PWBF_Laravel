@@ -34,7 +34,6 @@ class RoleController extends Controller
             'idrole' => 'required|exists:role,idrole',
         ]);
 
-        // Check if role already assigned
         $exists = Role_user::where('iduser', $request->iduser)
             ->where('idrole', $request->idrole)
             ->exists();

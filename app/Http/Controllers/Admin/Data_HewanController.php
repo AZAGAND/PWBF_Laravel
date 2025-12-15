@@ -21,7 +21,6 @@ class Data_HewanController extends Controller
     public function create()
     {
         $pemiliks = \App\Models\Pemilik::with('user')->get();
-        // Load Ras with Jenis for clear selection (e.g. "Persia - Kucing")
         $races = \App\Models\Ras_Hewan::with('jenisHewan')->get();
         
         return view('Roles.Admin.Views.Feature.Create_Hewan', compact('pemiliks', 'races'));

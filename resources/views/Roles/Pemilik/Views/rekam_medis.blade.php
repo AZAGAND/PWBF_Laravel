@@ -68,9 +68,9 @@
                                     </p>
                                 </td>
                                 <td class="px-4 py-5 text-center">
-                                    <button class="rounded-md bg-blue-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-blue-700">
+                                    <a href="{{ route('pemilik.rekam_medis.show', $rm->idrekam_medis) }}" class="inline-block rounded-md bg-blue-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-blue-700">
                                         🔍 Detail
-                                    </button>
+                                    </a>
                                 </td>
                             </tr>
                         @empty

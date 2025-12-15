@@ -23,20 +23,17 @@ class DashboardController extends Controller
         $totalPemilik = Pemilik::count();
         $totalHewan = Pet::count();
 
-        // Chart 1: User Distribution by Role
         $userRoles = Role_user::join('role', 'role_user.idrole', '=', 'role.idrole')
             ->select('role.nama_role', DB::raw('count(*) as total'))
             ->groupBy('role.nama_role')
             ->get();
 
-        // Chart 2: Pet Distribution by Type (Jenis Hewan)
         $petTypes = Pet::join('ras_hewan', 'pet.idras_hewan', '=', 'ras_hewan.idras_hewan')
             ->join('jenis_hewan', 'ras_hewan.idjenis_hewan', '=', 'jenis_hewan.idjenis_hewan')
             ->select('jenis_hewan.nama_jenis_hewan', DB::raw('count(*) as total'))
             ->groupBy('jenis_hewan.nama_jenis_hewan')
             ->get();
 
-        // Chart 3: Appointments Trend (Temu Dokter per Date)
         $appointments = Temu_dokter::select(DB::raw('DATE(tanggal) as date'), DB::raw('count(*) as total'))
             ->groupBy('date')
             ->orderBy('date', 'asc')
